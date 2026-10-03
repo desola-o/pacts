@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Participatory Action Cycles | PACTSAFRICA.ORG</title>
+<meta name="description" content="Participatory Action Cycles (PACs) engage local communities, adolescents/adults with SCD, caregivers, and influencers to raise awareness and address barriers to care.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 29px 0 80px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-family: var(--av);
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 29px;
+  line-height: normal;
+}
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.breadcrumb a:hover {
+  color: var(--red);
+}
+
+/* Page Title & Intro */
+h1.page-title {
+  font-family: var(--fu);
+  font-size: 33px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 7px;
+}
+.page-intro {
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+  margin-bottom: 35px;
+  max-width: 973px;
+}
+
+/* Repeater Grid */
+.pac-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+}
+
+/* PAC Card */
+.pac-card {
+  width: 474px;
+  height: 338px;
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Left Content Area */
+.pac-card-content {
+  width: 235px;
+  padding: 24px 20px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.pac-card-title {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  transform: translateY(95px);
+  transition: transform 0.4s ease-out;
+}
+
+.pac-card-desc {
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.45em;
+  font-weight: 400;
+  color: #000000;
+  margin-top: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out, visibility 0.35s;
+}
+
+.pac-card-btn {
+  margin-top: auto;
+  width: 151px;
+  height: 40px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: var(--av);
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, visibility 0.4s, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.pac-card-btn:hover {
+  background-color: var(--red);
+  color: #ffffff;
+  border-color: var(--red);
+}
+
+/* Card Hover Animation */
+.pac-card:hover .pac-card-title,
+.pac-card:focus-within .pac-card-title {
+  transform: translateY(0);
+}
+
+.pac-card:hover .pac-card-desc,
+.pac-card:focus-within .pac-card-desc {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pac-card:hover .pac-card-btn,
+.pac-card:focus-within .pac-card-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Right Photo Container */
+.pac-card-photo {
+  width: 239px;
+  height: 338px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.pac-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+  .pac-grid {
+    justify-content: center;
+  }
+  .pac-card {
+    width: 100%;
+    max-width: 474px;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  /* Mobile card view (always show details without requiring hover) */
+  .pac-card-title {
+    transform: translateY(0);
+  }
+  .pac-card-desc {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .pac-card-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    margin-top: 16px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+
+@media (max-width: 540px) {
+  .pac-card {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .pac-card-photo {
+    width: 100%;
+    height: 240px;
+  }
+  .pac-card-content {
+    width: 100%;
+    padding: 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a class="active" href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb">
+      <a href="https://pactsafrica.org/">Home</a> &gt; 
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a> &gt; 
+      <a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a> &gt; 
+      <a href="https://pactsafrica.org/participatory-action-cycles">Participatory Action Cycles</a>
+    </div>
+
+    <!-- Page Title & Intro -->
+    <h1 class="page-title">Participatory Action Cycles (PACs)</h1>
+    <p class="page-intro">
+      Each of the six facilities is surrounded by a community. From this community, a Research Coordinator brings together a team of adolescents/adults with SCD, caregivers, and community influencers to form a Participatory Action Cycle (PAC) group. These groups engage in community sensitization efforts to raise awareness, encourage early detection, and address local barriers to accessing SCD care.
+    </p>
+
+    <!-- Repeater Grid -->
+    <div class="pac-grid">
+
+      <!-- Card 1: PAC Nigeria -->
+      <article class="pac-card" tabindex="0">
+        <div class="pac-card-content">
+          <h2 class="pac-card-title">PAC Nigeria</h2>
+          <p class="pac-card-desc">Community sensitization efforts to raise awareness, encourage early detection, and address local barriers to accessing SCD care in Nigeria.</p>
+          <a class="pac-card-btn" href="https://pactsafrica.org/participatory-action-cycles/pac-nigeria">Read More</a>
+        </div>
+        <div class="pac-card-photo">
+          <img src="https://static.wixstatic.com/media/8bda2d_96da5c38d9c94053b1785cf0498cf9ce~mv2.jpg/v1/crop/x_55,y_0,w_1810,h_2560/fill/w_239,h_338,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250523-WA0009.jpg" alt="PAC Nigeria Community Session">
+        </div>
+      </article>
+
+      <!-- Card 2: PAC Zambia -->
+      <article class="pac-card" tabindex="0">
+        <div class="pac-card-content">
+          <h2 class="pac-card-title">PAC Zambia</h2>
+          <p class="pac-card-desc">Community sensitization efforts to raise awareness, encourage early detection, and address local barriers to accessing SCD care in Zambia.</p>
+          <a class="pac-card-btn" href="https://pactsafrica.org/participatory-action-cycles/pac-zambia">Read More</a>
+        </div>
+        <div class="pac-card-photo">
+          <img src="https://static.wixstatic.com/media/8bda2d_8e1a4b3754ee446e94659dc772602746~mv2.jpg/v1/crop/x_176,y_0,w_281,h_398/fill/w_239,h_338,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-06-16%20132756_edited.jpg" alt="PAC Zambia Community Meeting">
+        </div>
+      </article>
+
+      <!-- Card 3: PAC Ghana -->
+      <article class="pac-card" tabindex="0">
+        <div class="pac-card-content">
+          <h2 class="pac-card-title">PAC Ghana</h2>
+          <p class="pac-card-desc">Community sensitization efforts to raise awareness, encourage early detection, and address local barriers to accessing SCD care in Ghana.</p>
+          <a class="pac-card-btn" href="https://pactsafrica.org/participatory-action-cycles/pac-ghana">Read More</a>
+        </div>
+        <div class="pac-card-photo">
+          <img src="https://static.wixstatic.com/media/8bda2d_bd1fb48308a642ca81626264181c5792~mv2.jpg/v1/crop/x_175,y_0,w_161,h_228/fill/w_225,h_319,al_c,lg_1,q_80,enc_avif,quality_auto/unnamed%20(9).jpg" alt="PAC Ghana Community Outreach">
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
