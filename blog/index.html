@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | PACTSAFRICA.ORG</title>
+<meta name="description" content="Read all stories, announcements, podcast features, progress updates, and reports from PACTS Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --card-border: rgba(228, 249, 255, 0.85);
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 55px 0 90px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Category Filter / Header */
+.blog-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(5, 36, 79, 0.15);
+  padding-bottom: 14px;
+}
+.blog-category-title {
+  font-family: var(--fu);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.blog-count-info {
+  font-family: var(--av);
+  font-size: 14px;
+  color: #555;
+}
+
+/* 2-Column Grid (matches the 454px Wix layout) */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 28px;
+}
+
+/* Card Structure */
+.post-card {
+  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+.card-media {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background-color: #111;
+  overflow: hidden;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+.post-card:hover .card-media img {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+/* Video Play Overlay */
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-overlay svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* Card Body */
+.card-body {
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.card-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--av);
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 12px;
+}
+.card-meta-top .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #999;
+}
+.card-author {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.card-title {
+  font-family: var(--fu);
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 18px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+.post-card:hover .card-title {
+  color: var(--red);
+}
+
+/* Card Footer */
+.card-footer {
+  border-top: 1px solid rgba(5, 36, 79, 0.1);
+  padding-top: 14px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--av);
+  font-size: 12px;
+  color: #666;
+}
+.stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.stat-item svg {
+  width: 15px;
+  height: 15px;
+  fill: #666;
+}
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+.like-btn svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.5;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .card-media {
+    height: 240px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a class="active" href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Blog Header / Filter Bar -->
+    <div class="blog-nav">
+      <h1 class="blog-category-title">All Posts</h1>
+      <span class="blog-count-info">15 Posts</span>
+    </div>
+
+    <!-- 2-Column Blog Grid -->
+    <div class="blog-grid">
+
+      <!-- Post 1 (Video) -->
+      <a class="post-card" href="https://pactsafrica.org/post/media-spotlight-dr-imam-abubakar-untangles-the-complexities-of-sickle-cell-disease">
+        <div class="card-media">
+          <img src="https://i.ytimg.com/vi/T4WbzHYe6oo/maxresdefault.jpg" alt="MEDIA SPOTLIGHT: Dr. Imam Abubakar Untangles the Complexities of Sickle Cell Disease">
+          <div class="play-overlay">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.55)"/>
+              <polygon points="24,18 43,30 24,42" fill="#ffffff"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 2, 2026</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">MEDIA SPOTLIGHT: Dr. Imam Abubakar Untangles the Complexities of Sickle Cell Disease</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>11 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 2 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/advancing-sickle-cell-care-highlights-from-the-second-joint-sba-and-pac-meeting">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_05d90874e5694c16bd33220780ac71f3~mv2.png/v1/fill/w_617,h_363,fp_0.50_0.50,lg_1,q_95,enc_avif,quality_auto/8bda2d_05d90874e5694c16bd33220780ac71f3~mv2.png" alt="Advancing Sickle Cell Care: Highlights from the Second Joint SBA and PAC Meeting">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 2, 2026</span>
+            <span class="dot"></span>
+            <span>2 min read</span>
+          </div>
+          <h2 class="card-title">Advancing Sickle Cell Care: Highlights from the Second Joint SBA and PAC Meeting</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>21 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 3 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-zambia-july-to-december-2025-newsletter">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_d6e20183ba744a26931cd6a98d14b5f5~mv2.png/v1/fill/w_421,h_314,fp_0.50_0.50,lg_1,q_95,enc_avif,quality_auto/8bda2d_d6e20183ba744a26931cd6a98d14b5f5~mv2.png" alt="PACTS ZAMBIA: JULY TO DECEMBER 2025 NEWSLETTER">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 1, 2026</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS ZAMBIA: JULY TO DECEMBER 2025 NEWSLETTER</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>23 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 4 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-at-the-university-of-abuja-strengthening-systems-unlocking-opportunities">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_94de9c195e73405a844a9d3be062a008~mv2.png/v1/fill/w_1026,h_771,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_94de9c195e73405a844a9d3be062a008~mv2.png" alt="PACTS at the University of Abuja: Strengthening Systems, Unlocking Opportunities">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Aug 27, 2025</span>
+            <span class="dot"></span>
+            <span>2 min read</span>
+          </div>
+          <h2 class="card-title">PACTS at the University of Abuja: Strengthening Systems, Unlocking Opportunities</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>26 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 5 (Video) -->
+      <a class="post-card" href="https://pactsafrica.org/post/empowering-advocacy-knust-sickle-cell-podcast-feature">
+        <div class="card-media">
+          <img src="https://i.ytimg.com/vi/UaCzTjrN6PA/maxresdefault.jpg" alt="Empowering Advocacy: KNUST Sickle Cell Podcast Feature">
+          <div class="play-overlay">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.55)"/>
+              <polygon points="24,18 43,30 24,42" fill="#ffffff"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Jul 21, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">Empowering Advocacy: KNUST Sickle Cell Podcast Feature</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>22 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 6 (Video) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-ghana-fellow-dr-eunice-agyeman-ahmed-leads-inspiring-world-sickle-cell-day-initiatives">
+        <div class="card-media">
+          <img src="https://i.ytimg.com/vi/TfyYgdvBd74/maxresdefault.jpg" alt="PACTS Ghana Fellow Dr. Eunice Agyeman Ahmed Leads Inspiring World Sickle Cell Day Initiatives">
+          <div class="play-overlay">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.55)"/>
+              <polygon points="24,18 43,30 24,42" fill="#ffffff"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Jul 21, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Ghana Fellow Dr. Eunice Agyeman Ahmed Leads Inspiring World Sickle Cell Day Initiatives</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>34 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 7 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/podcast-strengthening-research-capacity-for-global-health-equity">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_caaa50cc769642cf8f74209f7dd04a1c~mv2.avif/v1/fill/w_800,h_601,al_c,q_90,enc_avif,quality_auto/8bda2d_caaa50cc769642cf8f74209f7dd04a1c~mv2.avif" alt="PODCAST: Strengthening Research Capacity for Global Health Equity">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Apr 15, 2025</span>
+            <span class="dot"></span>
+            <span>2 min read</span>
+          </div>
+          <h2 class="card-title">PODCAST: Strengthening Research Capacity for Global Health Equity</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>33 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 8 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-progress-update-spring-2025">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_051b9290523e4a4cbe282b191dad0278~mv2.png/v1/fill/w_1618,h_1215,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_051b9290523e4a4cbe282b191dad0278~mv2.png" alt="PACTS Progress Update: Spring 2025">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 12, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Progress Update: Spring 2025</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>29 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 9 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-progress-update-winter-2024">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_a6efb4e1bb3c4cb5a650267e93fc5396~mv2.png/v1/fill/w_1616,h_1214,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_a6efb4e1bb3c4cb5a650267e93fc5396~mv2.png" alt="PACTS Progress Update: Winter 2024">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 11, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Progress Update: Winter 2024</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>6 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 10 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-progress-update-summer-2024">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_826a7d543edc4d52998428a7907a9f19~mv2.png/v1/fill/w_1610,h_1209,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_826a7d543edc4d52998428a7907a9f19~mv2.png" alt="PACTS Progress Update: Summer 2024">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 11, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Progress Update: Summer 2024</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>2 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 11 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-progress-update-spring-2023">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_dc4d7fe9c55c474abf0203f9c1e207bf~mv2.png/v1/fill/w_1620,h_1217,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_dc4d7fe9c55c474abf0203f9c1e207bf~mv2.png" alt="PACTS Progress Update: Spring 2023">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 11, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Progress Update: Spring 2023</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>20 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 12 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-progress-update-autumn-2023">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_d40a98d40a824021bda9aa3bdc7d964e~mv2.png/v1/fill/w_577,h_433,fp_0.50_0.50,q_95,enc_avif,quality_auto/8bda2d_d40a98d40a824021bda9aa3bdc7d964e~mv2.png" alt="PACTS Progress Update - Autumn 2023">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Mar 11, 2025</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Progress Update - Autumn 2023</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>23 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 13 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/nigeria-capacity-strengthening-workshop-report">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_dee6a11ec5fe4f498b2e3ccf11d79d56~mv2.jpg/v1/fill/w_1816,h_1364,fp_0.50_0.50,q_90,enc_avif,quality_auto/8bda2d_dee6a11ec5fe4f498b2e3ccf11d79d56~mv2.jpg" alt="NIGERIA CAPACITY STRENGTHENING WORKSHOP REPORT">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Sep 22, 2024</span>
+            <span class="dot"></span>
+            <span>4 min read</span>
+          </div>
+          <h2 class="card-title">NIGERIA CAPACITY STRENGTHENING WORKSHOP REPORT</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>39 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 14 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/don-t-call-me-sickler-confronting-stigma-in-sickle-cell-disease">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_bbc7c0f1659a47929970d0a840a61a9a~mv2.jpg/v1/fill/w_1816,h_1364,fp_0.50_0.50,q_90,enc_avif,quality_auto/8bda2d_bbc7c0f1659a47929970d0a840a61a9a~mv2.jpg" alt="Don't call me “Sickler”: Confronting stigma in sickle cell disease">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Edeghonghon Olayemi</span>
+            <span class="dot"></span>
+            <span>Aug 19, 2024</span>
+            <span class="dot"></span>
+            <span>4 min read</span>
+          </div>
+          <h2 class="card-title">Don't call me “Sickler”: Confronting stigma in sickle cell disease</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>38 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 15 (Image) -->
+      <a class="post-card" href="https://pactsafrica.org/post/pacts-inauguration-event-in-zambia">
+        <div class="card-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_7c654f8e57514ad6b73b9195312c32e1~mv2.jpg/v1/fill/w_1510,h_1134,fp_0.50_0.50,q_90,enc_avif,quality_auto/8bda2d_7c654f8e57514ad6b73b9195312c32e1~mv2.jpg" alt="PACTS Inauguration Event in Zambia">
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="card-author">Admin</span>
+            <span class="dot"></span>
+            <span>Jul 30, 2024</span>
+            <span class="dot"></span>
+            <span>1 min read</span>
+          </div>
+          <h2 class="card-title">PACTS Inauguration Event in Zambia</h2>
+          <div class="card-footer">
+            <div class="stat-item">
+              <svg viewBox="0 0 19 19"><path d="M18.65 10.46C17.39 11.97 13.98 15.48 9.46 15.5H9.42C6.26 15.5 3.21 13.79 0.35 10.43a1.76 1.76 0 0 1 0-1.89C1.6 7.03 5.02 3.52 9.53 3.5h.04c3.16 0 6.22 1.71 9.08 5.07.46.55.46 1.34 0 1.89zM9.5 13.39a3.9 3.9 0 1 0 0-7.8 3.9 3.9 0 0 0 0 7.8z"/></svg>
+              <span>44 views</span>
+            </div>
+            <button class="like-btn" type="button" aria-label="Like post">
+              <svg viewBox="0 0 19 19"><path d="M9.45 15.53l.04-.04c-.34.22.74-.46 1.24-.8 1.15-.78 2.29-1.57 3.32-2.48 1.23-1 2.2-1.97 2.81-2.87.08-.15.17-.3.25-.44.77-1.42.96-2.82.5-3.94-.29-.85-1.03-1.55-2.01-1.95-1.6-.6-3.69.13-4.84 1.65l-.39.52-.4-.51C8.02 3.78 6.08 3.03 4.39 3.6c-.95.29-1.66 1-2.08 2.05-.45 1.1-.26 2.49.5 3.81.21.35.49.73.85 1.13.59.66 1.36 1.38 2.27 2.12 1.25 1.02 3.8 2.8 3.52 2.82z"/></svg>
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
