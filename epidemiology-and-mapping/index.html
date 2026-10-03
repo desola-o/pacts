@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epidemiology &amp; Mapping | PACTSAFRICA.ORG</title>
+<meta name="description" content="Quantifying geographical and physical barriers to Sickle Cell Disease (SCD) care in sub-Saharan Africa through epidemiological and geospatial mapping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 55px 0 80px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Page Title */
+h1.page-title {
+  font-family: var(--fu);
+  font-size: 33px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 58px;
+}
+
+/* Featured Lead Card */
+.lead-card {
+  width: 911px;
+  background-color: #ffffff;
+  display: flex;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 69px;
+}
+.lead-photo {
+  width: 239px;
+  height: 333px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.lead-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lead-details {
+  flex: 1;
+  padding: 40px 40px 41px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.lead-quote {
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+  margin-bottom: 18px;
+  font-style: normal;
+}
+.lead-name {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+}
+.lead-role {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 400;
+  color: #000000;
+}
+
+/* Narrative / Typography */
+.content-block {
+  width: 923px;
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.content-block p {
+  margin-bottom: 14px;
+}
+.content-block strong, .content-block b {
+  font-weight: 700;
+}
+.content-block .section-heading {
+  font-weight: 700;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.content-block ul {
+  list-style: disc inside;
+  margin-left: 8px;
+  margin-bottom: 16px;
+}
+.content-block li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Image Grids */
+.photo-grid {
+  width: 911px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px 24px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+.photo-item {
+  display: flex;
+  flex-direction: column;
+}
+.photo-box {
+  width: 411px;
+  height: 383px;
+  overflow: hidden;
+  background: #e2e2e2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption {
+  font-family: var(--av);
+  font-size: 14px;
+  font-style: italic;
+  color: #000000;
+  margin-top: 10px;
+}
+.center-caption {
+  font-family: var(--av);
+  font-size: 14px;
+  font-style: italic;
+  color: #000000;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 40px;
+  width: 911px;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+  .lead-card, .content-block, .photo-grid, .center-caption {
+    width: 100%;
+    margin-left: 0;
+  }
+  .photo-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .lead-card {
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 40px;
+  }
+  .lead-photo {
+    width: 100%;
+    height: 320px;
+  }
+  .lead-details {
+    padding: 24px 20px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .photo-box {
+    width: 100%;
+    height: 300px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a class="active" href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Page Title -->
+    <h1 class="page-title">Epidemiology &amp; Mapping</h1>
+
+    <!-- Lead Card -->
+    <div class="lead-card">
+      <div class="lead-photo">
+        <img src="https://static.wixstatic.com/media/8bda2d_172bcf9659534734b49be38f28c570cb~mv2.jpg/v1/crop/x_28,y_0,w_967,h_1348/fill/w_478,h_666,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Fred%20Piel_edited_edited.jpg" alt="Fred Piel">
+      </div>
+      <div class="lead-details">
+        <p class="lead-quote">“Each dot on our map represents a real person’s story—we map so that no SCD patient is left behind because of where they live”</p>
+        <p class="lead-name">Fred Piel</p>
+        <p class="lead-role">Epidemiology Lead&nbsp;</p>
+      </div>
+    </div>
+
+    <!-- Section 1: Overview & Activities -->
+    <div class="content-block">
+      <p><strong>Overview and Purpose&nbsp;</strong></p>
+      <p>The Mapping and Epidemiology Work Package is a core component of the PACTS project, focused on quantifying geographical and physical barriers to Sickle Cell Disease (SCD) care in sub-Saharan Africa. It uses epidemiological and geospatial methods to explore how physical access (and related factors) affects SCD patients’ ability to obtain care. The goal is to produce nationally representative data and insights that reveal the physical and cost barriers faced by SCD patients in accessing health services. This evidence will complement clinical and community findings from other PACTS work streams, helping to inform strategies to improve access to SCD care.&nbsp;</p>
+
+      <p class="section-heading">Current Geospatial Data Collection Activities &nbsp;</p>
+      <p><strong>(NIGERIA)&nbsp;</strong></p>
+      <p>We are currently conducting a mapping study in Nigeria, with planned expansion to other partner countries. Using random sampling, the study captures data from diverse settings—urban, peri-urban, and remote rural areas. Core activities include:&nbsp;</p>
+
+      <ul>
+        <li><strong>Health Facility Mapping</strong>: Leveraging Geographic Information Systems (GIS), we geolocate all facilities providing SCD care, including distance from health facilities.&nbsp;</li>
+        <li><strong>Patient Location Data</strong>: We collect anonymized residential coordinates of SCD patients in care, linking them to facility data to support spatial analysis and accessibility assessment.&nbsp;</li>
+      </ul>
+
+      <p class="section-heading">Access Assessment and Comparative Analysis</p>
+      <p>Using the assembled GIS database, we are assessing physical access to care and analyzing disparities across population groups and regions. Key components include:&nbsp;</p>
+
+      <ul>
+        <li><strong>Estimating Distance and Travel Time</strong>: We calculate how far and how long it takes for patients to reach the nearest SCD care facility, factoring in road networks and mode of transportation.&nbsp;</li>
+        <li><strong>Identifying Geographic Barriers</strong>: We focus on the geographic difficulty patients face in reaching care—such as living in remote locations with poor transport links, rough terrain, or long travel distances to the nearest facility. This includes areas with limited road access, lack of public transportation, or sparse distribution of SCD services, all of which significantly hinder timely access to care.</li>
+        <li><strong>Combining Data Layers</strong>: The analysis merges facility locations, patient distribution, and publicly available geospatial data (e.g., population density, infrastructure) to create a detailed view of accessibility.&nbsp;</li>
+      </ul>
+
+      <p><strong>Disaggregated Comparative Insights: Data is broken down to examine: &nbsp;</strong></p>
+      <ul>
+        <li>Urban vs. Rural Gaps in access to care&nbsp;</li>
+        <li>Distance-Based Disparities, comparing patients living within 5 km versus those beyond 50 km from care facilities&nbsp;</li>
+        <li>Cross-Regional Patterns, comparing geographic access across regions in Nigeria and among partner countries (Ghana, Zambia).&nbsp;</li>
+      </ul>
+
+      <p>These analyses reveal inequities in care access and help guide targeted, context-specific solutions. The findings feed into the broader PACTS initiative, providing a strong evidence base to support equitable SCD care planning and policy-making.&nbsp;</p>
+
+      <p style="margin-top: 24px;"><strong>Appendix 1</strong>: Geospatial data collection training conducted in Nigeria&nbsp;</p>
+    </div>
+
+    <!-- Appendix 1 Images (3 images) -->
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_447e8645d446495194ec6f0a56bb4c22~mv2.png/v1/crop/x_301,y_0,w_1471,h_1372/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_29_37%20PM.png" alt="Geospatial training session Nigeria">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_588c47eefe694eeb90eda9eb79b89fe8~mv2.png/v1/crop/x_148,y_0,w_1172,h_1092/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_34_05%20PM.png" alt="Training participants engaging in mapping exercises">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_476e49779820429dafd5eea262227cc4~mv2.png/v1/crop/x_124,y_0,w_1004,h_936/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_34_14%20PM.png" alt="Data collection review and demonstration">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Appendix 2 Field Visit -->
+    <div class="content-block" style="margin-top: 30px; margin-bottom: 12px;">
+      <p><strong>Appendix 2</strong>: Field visit</p>
+    </div>
+
+    <!-- Appendix 2 Images Grid -->
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_c43a1e2b496b44bbaa22bc49b1e4e9d0~mv2.png/v1/crop/x_94,y_0,w_996,h_928/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_34_23%20PM.png" alt="Visit to Nyanya General Hospital">
+        </div>
+        <p class="photo-caption">Visit to Nyanya General Hospital&nbsp;</p>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_edb7a8699e19422c9cf39843f5170389~mv2.png/v1/crop/x_245,y_0,w_1275,h_1188/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_34_50%20PM.png" alt="Visit to National Hospital Abuja">
+        </div>
+        <p class="photo-caption">Visit to National Hospital Abuja&nbsp;</p>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_af7f816693e34f74900dcf93c8dc7bed~mv2.png/v1/crop/x_0,y_146,w_726,h_677/fill/w_726,h_677,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_35_00%20PM.png" alt="Field visit to Dutse Makaranta PHC photo 1">
+        </div>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_39cf97c024424c4c85c0b88dbaddb4a0~mv2.png/v1/crop/x_113,y_0,w_953,h_888/fill/w_822,h_766,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-03-24%20at%204_35_06%20PM.png" alt="Field visit to Dutse Makaranta PHC photo 2">
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered Caption for Dutse Makaranta PHC -->
+    <p class="center-caption">Field visit to Dutse Makaranta PHC&nbsp;</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
