@@ -1,52 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance in Progress</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACTS</title>
+<meta name="description" content="PACTS is a medical research initiative dedicated to fostering collaborative efforts to enhance the understanding of Sickle Cell Disease (SCD) and improve patient care in Sub-Saharan Africa (SSA).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#05244f;--red:#a6180d;--sand:#f4f1ef;--line:#282626;
+--hr:"Helvetica Neue",Helvetica,Arial,sans-serif;--fu:"Futura","Futura PT",Jost,"Century Gothic",sans-serif;--av:"Avenir","Avenir Next","Nunito Sans",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{min-width:980px;font-family:var(--hr);font-weight:300;color:var(--navy);font-size:10px;overflow-x:auto}
+a{color:inherit;text-decoration:none;cursor:pointer}
+ul{list-style:none}
 
-        body {
-            background-color: #ffffff;
-            color: #000000;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
+/* header */
+header{position:relative;height:87px;z-index:49;display:flex;align-items:flex-start}
+header .rule{position:absolute;left:0;right:0;top:93px;border-top:1px solid var(--line)}
+.mb{display:none}
+.logo{margin:9px 0 0 80px;width:139px;height:68px;display:block}
+.logo img{width:139px;height:68px;object-fit:cover;display:block}
+nav{margin:35px 65px 0 auto}
+nav ul{display:flex}
+nav li{height:21px;position:relative}
+nav a{display:block;height:21px;line-height:21px;padding-left:15px;font:700 14px/21px var(--fu);color:#000;transition:color .4s}
+nav a:hover{color:var(--red)}
 
-        .container {
-            max-width: 600px;
-        }
+/* dropdown menus */
+nav .drop{display:none;position:absolute;top:21px;left:0;background:#fafafa;box-shadow:0 4px 12px rgba(0,0,0,.15);border-radius:2px;min-width:220px;padding:8px 0;z-index:200;flex-direction:column}
+nav .drop.r{left:auto;right:0}
+nav li:hover > .drop{display:flex}
+nav .drop li{height:auto;width:auto!important}
+nav .drop a{height:auto;line-height:1.4;padding:8px 18px;font:400 13px/1.4 var(--hr);color:#000;white-space:nowrap}
+nav .drop a:hover{color:var(--red);background:#f0f0f0}
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
+/* layout blocks */
+.strip{display:flex;margin:0 80px;min-width:980px;position:relative}
+.col{position:relative;background:var(--sand);min-width:0}
+.img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+.in{position:relative}
+.h1{font:400 42px/1em var(--hr);letter-spacing:-.02em;color:#000}
+h3{font:700 27px/1.4em var(--hr);color:#000}
+h3.s{font-size:29px;line-height:normal}
+p.b{font:300 17px/1.6em var(--hr);color:#000}
+.lnk{display:block;height:24px;font:700 17px/24px var(--hr);color:#000;box-shadow:0 1px 0 0 var(--red);white-space:nowrap;transition:color .4s}
+.lnk:hover{color:var(--red)}
 
-        p {
-            font-size: 1.125rem;
-            line-height: 1.5;
-            color: #333333;
-        }
-    </style>
+/* hero */
+.hero{margin:6px 80px 14px;height:615px;border:1px solid var(--navy)}
+.hero .col{flex:490 1 0;height:100%}
+.btn{display:flex;align-items:center;justify-content:center;width:158px;height:40px;background:var(--red);border:1px solid transparent;color:#fff;font:300 14px/1 var(--av);transition:all .2s}
+.btn:hover{background:#000;border-color:var(--red)}
+
+/* sections */
+.t2{margin-bottom:12px}
+.t2 .col{flex:1}
+.t2 h1{font:400 23px/1em var(--hr);letter-spacing:-.02em;color:#000;margin:18px 0 18px 109px;width:761px}
+.r3{height:487px}.r3 .col{flex:490 1 0}
+.r4{height:421px}
+.r5{height:446px}
+.r4 .c1,.r4 .c2,.r5 .c1,.r5 .c2{flex:320 1 0}
+.r4 .c3,.r5 .c3{flex:340 1 0}
+.c2.sh{box-shadow:0 5px 4px rgba(0,0,0,.6)}
+.white{background:#fff}
+
+/* footer */
+footer{position:relative}
+footer .rule{border-top:1px solid var(--line)}
+.fs{display:flex;min-width:980px;height:473px}
+.fs .col{background:transparent;height:100%}
+.f1{flex:247 1 0}.f2{flex:217 1 0}.f3{flex:516 1 0}
+.fh{font:700 21px/normal var(--fu);color:#000;margin-top:98px;white-space:nowrap}
+.ft{font:300 17px/1.8em var(--hr);color:#000}
+.ft u{text-decoration:underline}
+.fb{height:53px;min-width:980px;background:#fff}
+
+/* social */
+.social{position:fixed;left:29px;bottom:34px;z-index:60}
+.social li{width:26px;height:26px;margin-bottom:11px}
+.social li:last-child{margin-bottom:0}
+.social img{width:26px;height:26px;display:block;cursor:pointer}
+
+/* cookie banner */
+#ck{position:fixed;left:0;right:0;bottom:0;z-index:2147483647;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 48px 16px 20px;background:#fff;color:#000;font:400 14px/1.3 "Helvetica Neue",Helvetica,Arial,sans-serif;box-shadow:-8px -7px 20px rgba(0,0,0,.1)}
+#ck a{text-decoration:underline;margin-left:4px}
+#ck .bt{display:flex;align-items:center}
+#ck .st{text-decoration:underline;cursor:pointer;margin:0 10px}
+#ck button{min-width:55px;height:32px;padding:0 16px;margin:6px;font:inherit;cursor:pointer;border:1px solid #000}
+#ck .d{background:#fff;color:#000}
+#ck .a{background:#000;color:#fff}
+#ck button:hover,#ck .st:hover{opacity:.7}
+#ck .x{position:absolute;top:4px;right:4px;width:24px;height:24px;margin:0;border:0;background:none;font-size:22px;line-height:24px}
+
+/* responsive */
+@media (max-width:900px){
+  body{min-width:0}
+  header{height:72px;align-items:center}
+  header .rule{top:auto;bottom:0}
+  .logo{margin:0 0 0 16px;width:112px;height:55px}
+  .logo img{width:112px;height:55px}
+  .mb{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin:0 12px 0 auto;padding:0 10px;background:none;border:0;cursor:pointer}
+  .mb i{display:block;height:2px;background:#000;transition:transform .2s,opacity .2s}
+  .mb[aria-expanded=true] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .mb[aria-expanded=true] i:nth-child(2){opacity:0}
+  .mb[aria-expanded=true] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  nav{display:none;position:absolute;top:72px;left:0;right:0;margin:0;background:#fff;border-bottom:1px solid var(--line);z-index:70}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:8px 0}
+  nav li{width:auto!important;height:auto}
+  nav a{height:auto;padding:12px 24px;font-size:16px}
+  nav .drop{position:static;box-shadow:none;background:#f4f1ef;padding:4px 0;min-width:0}
+  nav .drop a{padding:8px 36px;font-size:14px}
+
+  .strip{flex-direction:column;margin:0 16px;min-width:0}
+  .hero{margin:16px 16px 0;height:auto}
+  .hero .col,.r3 .col,.r4 .col,.r5 .col,.t2 .col{flex:none;width:100%;height:auto}
+  .r3,.r4,.r5{height:auto}
+  .in{padding:40px 24px!important;width:auto!important}
+  .in>*{width:auto!important;max-width:100%}
+  .in a.lnk,.in a.btn{width:max-content!important}
+  .hero .in .h1{font-size:34px;min-height:0!important;margin:0}
+  .hero .col:last-child,.r3 .col:last-child,.r4 .c1,.r4 .c3,.r5 .c2{min-height:300px}
+  .r5 .c3 .in{padding-bottom:48px!important}
+  .t2{margin-bottom:0}
+  .t2 h1{margin:28px 24px;width:auto;font-size:21px}
+  .c2.sh{box-shadow:none}
+  .r5 .c1 .in,.r5 .c3 .in{padding-top:40px!important}
+
+  .fs{flex-direction:column;height:auto;min-width:0;padding-bottom:24px}
+  .fs .col{height:auto}
+  .fs .in{margin-left:24px!important;width:auto!important}
+  .fh{margin-top:36px}
+  .f3 .in p:last-child{margin:32px 0 0!important}
+  .f3 .in p.ft{width:auto!important}
+  .fb{min-width:0;height:24px}
+  footer .rule{margin:0}
+  .social{position:static;display:flex;gap:11px;padding:0 24px 88px;background:#fff}
+  .social li{margin:0}
+  #ck{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 40px 12px 16px}
+  #ck .bt{flex-wrap:wrap;margin-left:-10px}
+}
+@media (max-width:480px){
+  .hero .in .h1{font-size:28px}
+  h3,h3.s{font-size:24px}
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Under Maintenance</h1>
-        <p>Maintenance is currently in progress. Please check back soon.</p>
-    </div>
+<header>
+  <a class="logo" href="#"><img alt="PACTSv2 (1).jpg" data-i="8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af" data-w="278"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="#">About</a></li>
+    <li style="width:113px"><a href="#">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="#">Work Packages</a>
+      <ul class="drop">
+        <li><a href="#">Action Research Cycles</a></li>
+        <li><a href="#">Communication Interventions</a></li>
+        <li><a href="#">Capacity Strengthening</a></li>
+        <li><a href="#">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="#">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
 
+<main>
+  <!-- hero -->
+  <section class="strip hero">
+    <div class="col"><div class="img" data-i="8bda2d_05d82121a7654dd49de80589c4efb48c" style="opacity:0"></div>
+      <div class="in" style="padding:158px 0 0 35px">
+        <h1 class="h1" style="width:388px;min-height:223px;font-weight:400">Improving the wellbeing and health outcomes of patients with sickle cell disease in Sub-Saharan Africa.</h1>
+        <a class="btn" href="#" style="margin-top:21px">Learn More</a>
+      </div></div>
+    <div class="col"><div class="img" data-i="8bda2d_ab9cc0da1f0645ed9c05558592a6991f"></div></div>
+  </section>
+
+  <!-- heading -->
+  <section class="strip t2">
+    <div class="col"><h1>Patient-Centered Sickle Cell Disease Management in Sub-Saharan Africa</h1></div>
+  </section>
+
+  <!-- about -->
+  <section class="strip r3">
+    <div class="col"><div class="img" data-i="8bda2d_84616eecae304f14a166a865ddcbdfc7" style="opacity:.06"></div>
+      <div class="in" style="padding:104px 0 0 35px;width:439px">
+        <h3 style="width:321px;margin:0 0 14px 1px;font-size:27px">A collaborative approach <br>to combating SCD in SSA</h3>
+        <p class="b" style="width:403px;margin:0 0 42px 1px">PACTS is a research collaboration between&nbsp;<a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine, UK</a>,&nbsp;<a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a>,&nbsp;<a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a>,&nbsp;<a href="https://apps.knust.edu.gh/admissions/" target="_blank" rel="noopener">Kwame Nkrumah University of Science and Technology</a>,&nbsp;<a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a>, and&nbsp;<a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>.</p>
+        <a class="lnk" href="#" style="width:92px">Learn More</a>
+      </div></div>
+    <div class="col"><div class="img" data-i="8bda2d_1ade330e417c415883a89b567f99f8fa"></div></div>
+  </section>
+
+  <!-- work packages -->
+  <section class="strip r4">
+    <div class="col c1"><div class="img" data-i="8bda2d_18dea29e2b3f4c8faaff33168828e9f8"></div></div>
+    <div class="col c2 sh"><div class="img" data-i="8bda2d_11cc97c1a31347a9ab0987068edfeb1d" style="opacity:.07"></div>
+      <div class="in" style="padding:82px 0 0 46px;width:289px">
+        <h3 class="s" style="width:235px;margin-bottom:16px">Work Packages</h3>
+        <p class="b" style="width:243px;margin-bottom:19px">Explore our diverse research programs aimed at addressing the unique healthcare challenges faced by patients with SCD in Sub-Saharan Africa.</p>
+        <a class="lnk" href="#" style="width:124px">View Packages</a>
+      </div></div>
+    <div class="col c3"><div class="img" data-i="8bda2d_ee96be9e5016478a97defb9ce042d108"></div></div>
+  </section>
+
+  <!-- news + publications -->
+  <section class="strip r5">
+    <div class="col c1"><div class="img" data-i="8bda2d_34f2b52114714105a0ca60363541289c" style="opacity:.07"></div>
+      <div class="in" style="padding:89px 0 0 36px;width:252px">
+        <h3 class="s" style="width:200px;margin:0 0 17px 1px">Latest News <br>&amp; Events</h3>
+        <p class="b" style="width:216px;margin-bottom:22px">Stay informed about the latest developments, events, and breakthroughs in the field of SCD research.</p>
+        <a class="lnk" href="#" style="width:67px">View All</a>
+      </div></div>
+    <div class="col c2 white"><div class="img" data-i="8bda2d_243b1704fd28467f8886f9ae76a177c3"></div></div>
+    <div class="col c3"><div class="img" data-i="8bda2d_bf5121950ce2412f81dab7d0d75c0983" style="opacity:.07"></div>
+      <div class="in" style="padding:92px 0 0 42px;width:331px">
+        <h3 class="s" style="width:265px;margin-bottom:15px">Publications &amp; Resources</h3>
+        <p class="b" style="width:289px;margin-bottom:18px">Discover resources, publications, &amp; opportunities for collaboration with PACTS Africa in our shared mission to combat SCD in Sub-Saharan Africa.</p>
+        <a class="lnk" href="#" style="width:62px;margin-left:1px">View All</a>
+      </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="#">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="#">Contact</a></u></p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="#">Forum</a></u></p>
+      <p class="ft"><u><a href="#">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<div id="ck" role="region" aria-label="Cookie consent">
+  <span>We use cookies on our website to see how you interact with it. By accepting, you agree to our use of such cookies.<a href="#">Privacy Policy</a></span>
+  <div class="bt"><span class="st" role="button" tabindex="0">Settings</span><button class="d">Decline All</button><button class="a">Accept</button></div>
+  <button class="x" aria-label="Close">&times;</button>
+</div>
+
+<script>
+var B="https://static.wixstatic.com/media/";
+document.querySelectorAll("[data-i]").forEach(function(e){
+  var id=e.getAttribute("data-i")+"~mv2.jpg",w=e.getAttribute("data-w")||1400;
+  var u=B+id+"/v1/fit/w_"+w+",h_"+w+",al_c,q_80/img.jpg";
+  if(e.tagName==="IMG")e.src=u;else e.style.backgroundImage='url("'+u+'")';
+});
+document.querySelectorAll("#ck .d,#ck .a,#ck .x").forEach(function(b){
+  b.addEventListener("click",function(){document.getElementById("ck").remove()});
+});
+document.querySelector(".mb").addEventListener("click",function(){
+  var o=document.querySelector("nav").classList.toggle("open");this.setAttribute("aria-expanded",o);
+});
+</script>
 </body>
 </html>
