@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Communication Interventions | PACTSAFRICA.ORG</title>
+<meta name="description" content="Across Nigeria, Ghana, and Zambia, this work package focuses on bridging the divide between health researchers and journalists to improve the accuracy, reach, and impact of SCD reporting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 55px 0 80px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Page Title & Subtitle */
+h1.page-title {
+  font-family: var(--fu);
+  font-size: 33px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 0px;
+}
+.page-subtitle {
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+  margin-bottom: 27px;
+}
+
+/* Featured Lead Card */
+.lead-card {
+  width: 911px;
+  background-color: #ffffff;
+  display: flex;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-left: 35px;
+  margin-bottom: 22px;
+}
+.lead-photo {
+  width: 239px;
+  height: 333px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.lead-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lead-details {
+  flex: 1;
+  padding: 40px 40px 39px 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.lead-name {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+}
+.lead-role {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 400;
+  color: #000000;
+}
+
+/* Narrative / Typography */
+.content-block {
+  width: 911px;
+  margin-left: 35px;
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+}
+.content-block p {
+  margin-bottom: 14px;
+}
+.content-block strong, .content-block b {
+  font-weight: 700;
+}
+.content-block u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.content-block .section-heading {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.content-block .sub-heading {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+.content-block ul {
+  list-style: disc inside;
+  margin-left: 8px;
+  margin-bottom: 14px;
+}
+.content-block ol {
+  list-style: decimal inside;
+  margin-left: 8px;
+  margin-bottom: 14px;
+}
+.content-block li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Image Grids */
+.photo-grid {
+  width: 911px;
+  margin-left: 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-top: 18px;
+  margin-bottom: 42px;
+}
+.photo-item {
+  display: flex;
+  flex-direction: column;
+}
+.photo-box {
+  width: 100%;
+  height: 317px;
+  overflow: hidden;
+  background: #e2e2e2;
+}
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-caption {
+  font-family: var(--av);
+  font-size: 14px;
+  font-style: italic;
+  color: #000000;
+  margin-top: 8px;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+  .lead-card, .content-block, .photo-grid {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .lead-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .lead-photo {
+    width: 100%;
+    height: 320px;
+  }
+  .lead-details {
+    padding: 24px 20px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .photo-box {
+    height: 260px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a class="active" href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Title and Subtitle -->
+    <h1 class="page-title">Communication Interventions</h1>
+    <p class="page-subtitle">Across Nigeria, Ghana, and Zambia, this work package focuses on bridging the divide between health researchers and journalists to improve the accuracy, reach, and impact of SCD reporting.&nbsp;</p>
+
+    <!-- Team Lead Card -->
+    <div class="lead-card">
+      <div class="lead-photo">
+        <img src="https://static.wixstatic.com/media/8bda2d_154ec821e180478ab0ab831850617eb1~mv2.jpg/v1/crop/x_54,y_0,w_1888,h_2630/fill/w_478,h_666,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/AMB_BernardAppiah_00003_edited.jpg" alt="Bernard Appiah">
+      </div>
+      <div class="lead-details">
+        <p class="lead-name">Bernard Appiah</p>
+        <p class="lead-role">Communication Team Lead</p>
+      </div>
+    </div>
+
+    <!-- Section 1 Narrative -->
+    <div class="content-block">
+      <p>Effective communication is crucial in addressing gaps in sickle cell disease (SCD) awareness and advocacy. Across Nigeria, Ghana, and Zambia, this work package focuses on bridging the divide between health researchers and journalists to improve the accuracy, reach, and impact of SCD reporting.&nbsp;</p>
+
+      <p><strong>The PACTS Communication Intervention is designed to:&nbsp;</strong></p>
+      <ul>
+        <li>Identify communication gaps through data collection from health researchers and journalists.&nbsp;</li>
+        <li>Foster collaboration between journalists and researchers to enhance media coverage of SCD.&nbsp;</li>
+        <li>Assess the impact of the intervention using longitudinal social network analysis.&nbsp;</li>
+      </ul>
+
+      <span class="section-heading">PACTS Nigeria First Media Workshop – February 2024&nbsp;</span>
+      <p>In February 2024, Dr. Bernard, Team Lead for the Communication Work Package, visited Nigeria to initiate the researcher-journalist engagement study and strengthen media collaborations for improved SCD communication.&nbsp;</p>
+      <p><strong>Key Activities:&nbsp;</strong></p>
+      <ol>
+        <li>Training &amp; Research Tools Development: Dr. Bernard worked closely with research assistants (RAs), PhD fellows, and the Principal Investigator (PI) to refine the data collection tools for the researcher-journalist study.&nbsp;</li>
+        <li>Media Engagement: In coordination with Mr. Aro, he engaged with radio stations to discuss strategies for leveraging media in SCD awareness and advocacy.&nbsp;</li>
+      </ol>
+    </div>
+
+    <!-- Images for Workshop 1 (Feb 2024) -->
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_35afa5bb7e584b61b0551bc783cab9f1~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1st%20Media%20training%20workshop%20Feb%202024%20II.jpg" alt="Dr Bernard Media Training Workshop February 2024">
+        </div>
+        <p class="photo-caption">Dr Bernard Media Training Workshop February 2024&nbsp;</p>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_b5cdb013af1444a2903f46d154dfd86c~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1st%20Media%20training%20workshop%20Feb%202024%20I.jpg" alt="CESRTA Training Workshop February 2024">
+        </div>
+        <p class="photo-caption">CESRTA Training Workshop February 2024&nbsp;</p>
+      </div>
+    </div>
+
+    <!-- Section 2 Narrative -->
+    <div class="content-block">
+      <span class="section-heading">PACTS Nigeria Second Media Workshop – November 18-20, 2024&nbsp;</span>
+      <p>In November 2024, Dr. Bernard, Lead of the Communication Work Package, visited Nigeria for the Second Media Workshop, aimed at enhancing the quality of sickle cell disease (SCD) reporting and researcher-media engagement.&nbsp;</p>
+
+      <p><strong>Key Highlights of the Workshop:</strong></p>
+      
+      <span class="sub-heading">Training for Journalists</span>
+      <ul>
+        <li>Best practices for accurate and ethical reporting on SCD.&nbsp;</li>
+        <li>Introduction to content analysis and its benefits in improving SCD narratives.&nbsp;</li>
+      </ul>
+
+      <span class="sub-heading">Training for Researchers</span>
+      <ul>
+        <li>Strategies for effectively engaging with journalists to ensure accurate reporting.&nbsp;</li>
+        <li>How to translate research findings into accessible information for the media.&nbsp;</li>
+      </ul>
+
+      <span class="sub-heading">Collaborative Radio Campaign Development</span>
+      <ul>
+        <li>Patients, caregivers, researchers, and journalists co-developed a radio campaign to tell compelling SCD stories.&nbsp;</li>
+        <li>In Nigeria, the campaign focused on newborn screening, emphasizing its importance in early SCD detection and management.&nbsp;</li>
+      </ul>
+
+      <p>This workshop reinforced the power of media in shaping public perception and driving awareness about sickle cell disease in Nigeria.&nbsp;</p>
+    </div>
+
+    <!-- Images for Workshop 2 (Nov 2024 Nigeria) -->
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_e1c1f24fddc441bbbf7d0cac120435c5~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_1001_JPG.jpg" alt="PACTS Media Training Session">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_00ac8d8848984994b135d1eb05a13d8e~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Creating%20synergy%20for%20SCD%20-%20journalist%20and%20researcher%20training%20within%20the%20Communication%20WP_.jpg" alt="Creating synergy for SCD - journalist and researcher training">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_6df8e16a7b6c4b0ebfe49eaf35da0bba~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Researchers%20at%20the%20Communication%20training%20in%20Nigeria%20Nov%202025_JPG.jpg" alt="Researchers at the Communication training in Nigeria">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_009fa29f733c4b1f887cac9309df3e15~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/A%20cross-section%20of%20Stakeholders%20at%20the%20PACTS%20Workshop%20Nigeria%202025_JPG.jpg" alt="Cross-section of Stakeholders at the PACTS Workshop Nigeria">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3 Narrative -->
+    <div class="content-block">
+      <span class="section-heading">PACTS Communication Intervention Workshop, LUSAKA, ZAMBIA – November 26-28, 2024&nbsp;</span>
+      <p>In November 2024, the PACTS team hosted a three-day workshop in Lusaka, Zambia, aimed at improving media communication around sickle cell disease (SCD) and strengthening collaboration between journalists and health researchers.</p>
+
+      <p><strong>Key Highlights of the Workshop:</strong></p>
+
+      <span class="sub-heading">Training for Journalists</span>
+      <ul>
+        <li>Explored the role of media in health research and ethical SCD reporting.</li>
+        <li>Introduced media content analysis and strategies for impactful storytelling.</li>
+        <li>Practical sessions on conducting interviews with health researchers.</li>
+      </ul>
+
+      <span class="sub-heading">Training for Researchers</span>
+      <ul>
+        <li>Strengthened understanding of media dynamics and how to engage journalists.</li>
+        <li>Shared techniques for translating research into accessible public narratives.</li>
+        <li>Role-play exercises to improve communication with media professionals.</li>
+      </ul>
+
+      <span class="sub-heading">Collaborative Radio Campaign Development</span>
+      <ul>
+        <li>Researchers, journalists, caregivers, and warriors co-designed a radio series.</li>
+        <li>Focus areas included genetic counseling, stigma, myths, and SCD management.</li>
+        <li>Participants named episodes and developed scripts on key SCD themes.</li>
+      </ul>
+    </div>
+
+    <!-- Images for Section 3 (Zambia Workshop) -->
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_b20c21b369f44fe0968ab7f0476f7fc5~mv2.png/v1/fill/w_401,h_301,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101758.png" alt="Zambia Communication Workshop Presentation">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_86420a7152f54ab0bbd4a7acd73a182a~mv2.png/v1/fill/w_405,h_304,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101813.png" alt="Zambia Media Workshop Training Session">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_2b9380c930ba447f955eda607386c50c~mv2.png/v1/fill/w_347,h_260,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101823.png" alt="Group Collaboration at Zambia Workshop">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_ac51e9ecba9e4139b6384ea1e48059aa~mv2.png/v1/fill/w_356,h_267,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101829.png" alt="Participants Discussion at Zambia Workshop">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_96d3ce93699a49e3abf6c407a524b7dc~mv2.png/v1/fill/w_445,h_335,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101835.png" alt="Radio Campaign Development Session in Zambia">
+        </div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="https://static.wixstatic.com/media/8bda2d_92a372584f4149fc9e82ec196d6dc555~mv2.png/v1/fill/w_447,h_335,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202025-08-18%20101843.png" alt="Cross Section of Participants at Zambia Workshop">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
