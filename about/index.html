@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | PACTS Africa</title>
+<meta name="description" content="The NIHR Global Health Research Group on Patient-centred sickle cell disease management in sub-Saharan Africa (PACTS).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --sand: #f4f1ef;
+  --line: #282626;
+  --gray-bg: #fafafa;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* layout blocks */
+.strip { display: flex; margin: 0 80px; position: relative; }
+.col { position: relative; background: var(--sand); min-width: 0; }
+.img { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+.in { position: relative; }
+
+/* typography */
+h1.title { font: 700 51px/1em var(--hr); letter-spacing: -0.02em; color: #000; margin-bottom: 24px; }
+h2.section-heading { font: 700 42px/1.3em var(--hr); color: #000; margin-bottom: 24px; }
+p.body-text { font: 300 17px/1.8em var(--hr); color: #000; }
+p.body-text a { text-decoration: underline; color: #000; }
+p.body-text a:hover { color: var(--red); }
+
+/* Section 1: Intro */
+.sec-intro { margin: 6px 80px 24px; min-height: 730px; }
+.sec-intro .col-text { flex: 490 1 0; background: var(--sand); }
+.sec-intro .col-img { flex: 490 1 0; min-height: 730px; }
+
+/* Section 2: Outcomes & Mission */
+.sec-outcomes { margin: 0 80px 24px; min-height: 642px; gap: 40px; }
+.sec-outcomes .col-outcome { flex: 490 1 0; background: #fff; padding-top: 60px; }
+.sec-outcomes .col-mission { flex: 490 1 0; background: #fff; padding-top: 60px; }
+.custom-list { list-style: disc inside; margin-top: 8px; }
+.custom-list li { font: 300 17px/1.7em var(--hr); color: #000; margin-bottom: 20px; }
+
+/* Section 3: Leadership (Co-Principal Investigators) */
+.sec-pi-wrapper {
+  width: 100%;
+  background: var(--gray-bg);
+  padding: 50px 0;
+  display: block;
+}
+.sec-pi {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  gap: 36px;
+}
+.pi-card {
+  flex: 1 1 0;
+  height: 580px;
+  min-height: 580px;
+  position: relative;
+  overflow: hidden;
+  background: #eae7e4;
+}
+.pi-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.pi-info-box {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  background: var(--sand);
+  padding: 26px 30px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.1);
+  z-index: 2;
+}
+.pi-name { font: 700 28px/1.2em var(--hr); color: #000; margin-bottom: 6px; }
+.pi-role { font: 400 21px/1.3em var(--hr); color: #000; margin-bottom: 16px; }
+.pi-contact { font: 700 17px/1 var(--hr); color: #000; text-decoration: underline; display: inline-block; }
+.pi-contact:hover { color: var(--red); }
+
+/* footer */
+footer { position: relative; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* floating social bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* responsive (mobile & tablet) */
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  /* sections stack */
+  .strip { flex-direction: column; margin: 0 16px; min-width: 0; }
+  .sec-intro, .sec-outcomes { margin: 0 16px 24px; min-width: 0; flex-direction: column; gap: 20px; }
+  .sec-intro .col-text, .sec-intro .col-img, .sec-outcomes .col-outcome, .sec-outcomes .col-mission { width: 100%; flex: none; }
+  .sec-intro .col-img { min-height: 340px; }
+  .sec-outcomes .col-outcome, .sec-outcomes .col-mission { padding-top: 20px; }
+  .in { padding: 40px 20px !important; width: auto !important; }
+
+  /* Section 3 fix: explicit block flow & heights */
+  .sec-pi-wrapper {
+    display: block !important;
+    width: 100% !important;
+    padding: 36px 0 !important;
+    background: var(--gray-bg) !important;
+  }
+  .sec-pi {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    margin: 0 !important;
+    gap: 28px !important;
+  }
+  .pi-card {
+    display: block !important;
+    flex: none !important;
+    width: 100% !important;
+    height: 500px !important;
+    min-height: 500px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .pi-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 15% !important;
+    display: block !important;
+  }
+  .pi-info-box {
+    position: absolute !important;
+    left: 16px !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    padding: 20px 24px !important;
+    z-index: 2 !important;
+  }
+
+  /* footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+@media (max-width: 480px) {
+  h1.title { font-size: 38px; }
+  h2.section-heading { font-size: 30px; }
+  .pi-card { height: 440px !important; min-height: 440px !important; }
+  .pi-name { font-size: 24px; }
+  .pi-role { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a class="active" href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main>
+  <!-- Section 1: Intro -->
+  <section class="strip sec-intro">
+    <div class="col col-text">
+      <div class="in" style="padding: 159px 38px 40px 38px;">
+        <h1 class="title">About</h1>
+        <p class="body-text" style="margin-bottom: 24px;">
+          The NIHR Global Health Research Group on Patient-centred sickle cell disease management in sub-Saharan Africa (PACTS) is a research collaboration between 
+          <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine, UK</a>, 
+          <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a>, 
+          <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a>, 
+          <a href="https://apps.knust.edu.gh/admissions/" target="_blank" rel="noopener">Kwame Nkrumah University of Science and Technology</a>, 
+          <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a>, and 
+          <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>.
+        </p>
+        <p class="body-text">
+          It is led by Professor Imelda Bates from LSTM and Professor Obiageli Nnodu from the University of Abuja.
+        </p>
+      </div>
+    </div>
+    <div class="col col-img">
+      <div class="img" style="background-image: url('https://static.wixstatic.com/media/8bda2d_3d95d95664c54e7592d679df883fc1b5~mv2.jpg');"></div>
+    </div>
+  </section>
+
+  <!-- Section 2: Outcomes and Mission -->
+  <section class="strip sec-outcomes">
+    <div class="col col-outcome">
+      <div class="in" style="padding: 40px 30px 40px 20px;">
+        <h2 class="section-heading">Outcomes</h2>
+        <ul class="custom-list">
+          <li>Patient-centred SCD care, and evidence-based clinical care that meets international standards.</li>
+          <li>Sustainable solutions to barriers in accessing SCD care, with increased uptake in care.</li>
+          <li>Sustainable network of researchers and institutions able to do and support high quality implementation research for health problems irrespective of disease focus.</li>
+          <li>Expansion into a multidisciplinary, multi-partner Pan-African centre for SCD implementation research.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col col-mission">
+      <div class="in" style="padding: 40px 20px 40px 30px;">
+        <h2 class="section-heading">Mission</h2>
+        <p class="body-text">
+          PACTS Africa is dedicated to making a difference in the lives of SCD patients in SSA. We are committed to implementing evidence-based clinical interventions and improving the detection of SCD in a patient-centered approach to enhance wellbeing and health outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Leadership (Co-Principal Investigators) -->
+  <div class="sec-pi-wrapper">
+    <section class="sec-pi">
+      <!-- Imelda Bates -->
+      <div class="pi-card">
+        <img class="pi-img" src="https://static.wixstatic.com/media/8bda2d_288b9fb3cd0848ffb1010f40f7b326a7~mv2.jpg" alt="Imelda Bates">
+        <div class="pi-info-box">
+          <h3 class="pi-name">Imelda Bates</h3>
+          <p class="pi-role">Co-Principal Investigator</p>
+          <a class="pi-contact" href="https://pactsafrica.org/contact">Contact</a>
+        </div>
+      </div>
+
+      <!-- Obiageli Nnodu -->
+      <div class="pi-card">
+        <img class="pi-img" src="https://static.wixstatic.com/media/8bda2d_c2d715a795684b7f8b853fd99168f427~mv2.jpeg" alt="Obiageli Nnodu">
+        <div class="pi-info-box">
+          <h3 class="pi-name">Obiageli Nnodu</h3>
+          <p class="pi-role">Co-Principal Investigator</p>
+          <a class="pi-contact" href="https://pactsafrica.org/contact">Contact</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
