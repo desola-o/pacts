@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capacity Strengthening | PACTSAFRICA.ORG</title>
+<meta name="description" content="Capacity Strengthening for Implementation Research - PACTS Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 55px 0 80px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Page Title & Subtitle */
+h1.page-title {
+  font-family: var(--fu);
+  font-size: 33px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 68px;
+}
+
+/* Featured Lead Card */
+.lead-card {
+  width: 911px;
+  background-color: #ffffff;
+  display: flex;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-left: 34px;
+  margin-bottom: 31px;
+}
+.lead-photo {
+  width: 239px;
+  height: 333px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.lead-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lead-details {
+  flex: 1;
+  padding: 40px 40px 45px 51px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.lead-name {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+}
+.lead-role {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 400;
+  color: #000000;
+}
+
+/* Country Title */
+.country-heading {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-left: 37px;
+  margin-bottom: 12px;
+}
+
+/* Narrative / Typography */
+.content-block {
+  width: 911px;
+  margin-left: 37px;
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+}
+.content-block p {
+  margin-bottom: 14px;
+}
+.content-block strong, .content-block b {
+  font-weight: 700;
+}
+.content-block u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.content-block .section-heading {
+  font-weight: 700;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.content-block ul {
+  list-style: disc inside;
+  margin-left: 8px;
+  margin-bottom: 14px;
+}
+.content-block li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* Image Grids */
+.photo-grid {
+  width: 911px;
+  margin-left: 37px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 20px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+.photo-box {
+  width: 100%;
+  height: 317px;
+  overflow: hidden;
+  background: #e2e2e2;
+}
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+  .lead-card, .country-heading, .content-block, .photo-grid {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .lead-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .lead-photo {
+    width: 100%;
+    height: 320px;
+  }
+  .lead-details {
+    padding: 24px 20px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .photo-box {
+    height: 260px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a class="active" href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Page Title -->
+    <h1 class="page-title">Capacity Strengthening for Implementation Research</h1>
+
+    <!-- Team Lead Card -->
+    <div class="lead-card">
+      <div class="lead-photo">
+        <img src="https://static.wixstatic.com/media/8bda2d_64255a289b3c4b6ca547d659e3194b8d~mv2.jpg/v1/crop/x_17,y_0,w_1224,h_1705/fill/w_478,h_666,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Justin%20Pulford_low.jpg" alt="Justin Pulford">
+      </div>
+      <div class="lead-details">
+        <p class="lead-name">Justin Pulford</p>
+        <p class="lead-role">Capacity Strengthening Lead</p>
+      </div>
+    </div>
+
+    <!-- Country Section Header -->
+    <div class="country-heading">NIGERIA</div>
+
+    <!-- Section 1 Narrative -->
+    <div class="content-block">
+      <p>
+        <strong>Date</strong>: <u>August 23, 2024</u><br>
+        <strong>Theme</strong>: <u>Driving Innovation in Sickle Cell Care: Strengthening Capacity for Better Patient Outcomes</u>
+      </p>
+
+      <p>PACTS Nigeria hosted a Capacity Strengthening Workshop attended by:&nbsp;</p>
+      <ul>
+        <li>Members of the Standards-Based Audit (SBA) team and the Participatory Action Cycle (PAC) from the six participating sites&nbsp;</li>
+        <li>Dr. Motto Nganda from the Liverpool School of Tropical Medicine&nbsp;</li>
+        <li>Members of the PACTS Nigeria team, CESRTA staff, and members of the University of Abuja community.</li>
+      </ul>
+
+      <p><strong>Workshop Highlights&nbsp;</strong></p>
+      <p>This was the most comprehensive meeting of PACTS Nigeria to date, bringing together all key stakeholders involved in the project. The workshop:&nbsp;<br>
+      ✅ Introduced research coordinators and site teams to one another&nbsp;<br>
+      ✅ Provided breakout sessions on SBA and PAC methodologies&nbsp;<br>
+      ✅ Facilitated prioritization of challenges across sites and brainstorming of solutions&nbsp;<br>
+      ✅ Included training sessions on effective data collection and analysis&nbsp;</p>
+
+      <p><strong>Objectives of the Learning Sessions&nbsp;</strong></p>
+      <p>The sessions were designed to:&nbsp;</p>
+      <ul>
+        <li>Foster shared learning among stakeholders&nbsp;</li>
+        <li>Enable exchange of best practices&nbsp;</li>
+        <li>Encourage friendly competition to drive improvements&nbsp;</li>
+        <li>Identify breakthrough ideas with the potential for success&nbsp;</li>
+        <li>Develop actionable change strategies&nbsp;</li>
+      </ul>
+
+      <p>This workshop laid the foundation for strengthening capacity in sickle cell care and ensuring improved patient outcomes across all participating sites.&nbsp;</p>
+    </div>
+
+    <!-- Workshop Gallery Grid (6 Images) -->
+    <div class="photo-grid">
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_ee96be9e5016478a97defb9ce042d108~mv2.jpg/v1/crop/x_0,y_385,w_1367,h_1026/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0823%20(1)_edited_edited.jpg" alt="Capacity Strengthening Workshop Session">
+      </div>
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_ea9764b100fb46b8b396109b7213f8b8~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JKP_1142%20(1).jpg" alt="Stakeholders and Participants at Workshop">
+      </div>
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_ecea8943c914442ba83285a6592586ee~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JKP_1174%20(1).jpg" alt="Interactive Breakout Discussions">
+      </div>
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_09f18c732d4c4c78b2e01e068fe4d43b~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JKP_1403%20(1).jpg" alt="Research Coordinators Group Photo">
+      </div>
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_47081c7c033c4b2089bbfdc4ddaa6eb0~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JKP_1225_edited.jpg" alt="Presentation at Capacity Strengthening Workshop">
+      </div>
+      <div class="photo-box">
+        <img src="https://static.wixstatic.com/media/8bda2d_27bf8be08d2f43babab695d13e14a561~mv2.jpg/v1/fill/w_844,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/JKP_0990%20(1).jpg" alt="Collaborative Session at Workshop">
+      </div>
+    </div>
+
+    <!-- Section 2: Safeguarding -->
+    <div class="content-block" style="margin-top: 30px;">
+      <p><strong>SAFEGUARDING&nbsp;</strong></p>
+
+      <p>At PACTS, safeguarding is a core priority, ensuring that all project activities uphold the highest standards of protection, ethics, and well-being across all participating institutions.&nbsp;</p>
+
+      <p>Each country involved in the PACTS project has a dedicated safeguarding champion.&nbsp;</p>
+      <ul>
+        <li>Nigeria - Ijeoma Udeozo &nbsp;</li>
+        <li>Zambia - Mabuchi Banda&nbsp;</li>
+        <li>Ghana – Daniel Ansong&nbsp;</li>
+      </ul>
+
+      <p>Safeguarding Champions are responsible for:&nbsp;<br>
+      ✔ Overseeing safeguarding measures within their institution.&nbsp;<br>
+      ✔ Providing support to participants, staff, and community members.&nbsp;<br>
+      ✔ Attending monthly safeguarding meetings &nbsp;<br>
+      ✔ Ensuring compliance with safeguarding standards in all project activities.&nbsp;</p>
+
+      <p><strong>Training &amp; Capacity Building&nbsp;</strong></p>
+      <p>✔ All safeguarding champions have undergone specialized safeguarding training beyond the general safeguarding sessions provided within the PACTS project.&nbsp;<br>
+      ✔ Continuous training and mentorship equip them with the skills to prevent, identify, and respond to safeguarding concerns.&nbsp;</p>
+
+      <p>PACTS is committed to fostering a safe, inclusive, and protective environment for all stakeholders engaged in the project.&nbsp;</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
