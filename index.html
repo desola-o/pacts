@@ -57,7 +57,7 @@ p.b{font:300 17px/1.6em var(--hr);color:#000}
 /* sections */
 .t2{margin-bottom:12px}
 .t2 .col{flex:1}
-.t2 h1{font:400 23px/1em var(--hr);letter-spacing:-.02em;color:#000;margin:18px 0 18px 109px;width:761px}
+.t2 h1{font:400 23px/1em var(--hr);letter-spacing:-.02em;color:#000;margin:18px auto;text-align:center;width:100%}
 .r3{height:487px}.r3 .col{flex:490 1 0}
 .r4{height:421px}
 .r5{height:446px}
@@ -83,17 +83,6 @@ footer .rule{border-top:1px solid var(--line)}
 .social li:last-child{margin-bottom:0}
 .social img{width:26px;height:26px;display:block;cursor:pointer}
 
-/* cookie banner */
-#ck{position:fixed;left:0;right:0;bottom:0;z-index:2147483647;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 48px 16px 20px;background:#fff;color:#000;font:400 14px/1.3 "Helvetica Neue",Helvetica,Arial,sans-serif;box-shadow:-8px -7px 20px rgba(0,0,0,.1)}
-#ck a{text-decoration:underline;margin-left:4px}
-#ck .bt{display:flex;align-items:center}
-#ck .st{text-decoration:underline;cursor:pointer;margin:0 10px}
-#ck button{min-width:55px;height:32px;padding:0 16px;margin:6px;font:inherit;cursor:pointer;border:1px solid #000}
-#ck .d{background:#fff;color:#000}
-#ck .a{background:#000;color:#fff}
-#ck button:hover,#ck .st:hover{opacity:.7}
-#ck .x{position:absolute;top:4px;right:4px;width:24px;height:24px;margin:0;border:0;background:none;font-size:22px;line-height:24px}
-
 /* responsive */
 @media (max-width:900px){
   body{min-width:0}
@@ -115,17 +104,18 @@ footer .rule{border-top:1px solid var(--line)}
   nav .drop a{padding:8px 36px;font-size:14px}
 
   .strip{flex-direction:column;margin:0 16px;min-width:0}
-  .hero{margin:16px 16px 0;height:auto}
+  .hero{margin:16px 16px 0;height:auto;border:none}
   .hero .col,.r3 .col,.r4 .col,.r5 .col,.t2 .col{flex:none;width:100%;height:auto}
   .r3,.r4,.r5{height:auto}
   .in{padding:40px 24px!important;width:auto!important}
   .in>*{width:auto!important;max-width:100%}
-  .in a.lnk,.in a.btn{width:max-content!important}
+  .in a.lnk{width:max-content!important}
+  .in a.btn{width:max-content!important;padding:0 28px!important}
   .hero .in .h1{font-size:34px;min-height:0!important;margin:0}
   .hero .col:last-child,.r3 .col:last-child,.r4 .c1,.r4 .c3,.r5 .c2{min-height:300px}
   .r5 .c3 .in{padding-bottom:48px!important}
   .t2{margin-bottom:0}
-  .t2 h1{margin:28px 24px;width:auto;font-size:21px}
+  .t2 h1{margin:28px 24px;width:auto;font-size:21px;text-align:left}
   .c2.sh{box-shadow:none}
   .r5 .c1 .in,.r5 .c3 .in{padding-top:40px!important}
 
@@ -139,8 +129,6 @@ footer .rule{border-top:1px solid var(--line)}
   footer .rule{margin:0}
   .social{position:static;display:flex;gap:11px;padding:0 24px 88px;background:#fff}
   .social li{margin:0}
-  #ck{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 40px 12px 16px}
-  #ck .bt{flex-wrap:wrap;margin-left:-10px}
 }
 @media (max-width:480px){
   .hero .in .h1{font-size:28px}
@@ -151,26 +139,26 @@ footer .rule{border-top:1px solid var(--line)}
 <body>
 
 <header>
-  <a class="logo" href="#"><img alt="PACTSv2 (1).jpg" data-i="8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af" data-w="278"></a>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTSv2 (1).jpg" data-i="8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af" data-w="278"></a>
   <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
   <nav aria-label="Site"><ul>
-    <li style="width:66px"><a href="#">About</a></li>
-    <li style="width:113px"><a href="#">Collaboration</a></li>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
     <li style="width:125px">
-      <a href="#">Work Packages</a>
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
       <ul class="drop">
-        <li><a href="#">Action Research Cycles</a></li>
-        <li><a href="#">Communication Interventions</a></li>
-        <li><a href="#">Capacity Strengthening</a></li>
-        <li><a href="#">Epidemiology &amp; Mapping</a></li>
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
       </ul>
     </li>
-    <li style="width:121px"><a href="#">News &amp; Events</a></li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
     <li style="width:62px">
       <a href="#">More</a>
       <ul class="drop r">
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">People</a></li>
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
       </ul>
     </li>
   </ul></nav>
@@ -183,7 +171,7 @@ footer .rule{border-top:1px solid var(--line)}
     <div class="col"><div class="img" data-i="8bda2d_05d82121a7654dd49de80589c4efb48c" style="opacity:0"></div>
       <div class="in" style="padding:158px 0 0 35px">
         <h1 class="h1" style="width:388px;min-height:223px;font-weight:400">Improving the wellbeing and health outcomes of patients with sickle cell disease in Sub-Saharan Africa.</h1>
-        <a class="btn" href="#" style="margin-top:21px">Learn More</a>
+        <a class="btn" href="https://pactsafrica.org/about" style="margin-top:21px">Learn More</a>
       </div></div>
     <div class="col"><div class="img" data-i="8bda2d_ab9cc0da1f0645ed9c05558592a6991f"></div></div>
   </section>
@@ -199,7 +187,7 @@ footer .rule{border-top:1px solid var(--line)}
       <div class="in" style="padding:104px 0 0 35px;width:439px">
         <h3 style="width:321px;margin:0 0 14px 1px;font-size:27px">A collaborative approach <br>to combating SCD in SSA</h3>
         <p class="b" style="width:403px;margin:0 0 42px 1px">PACTS is a research collaboration between&nbsp;<a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine, UK</a>,&nbsp;<a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a>,&nbsp;<a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a>,&nbsp;<a href="https://apps.knust.edu.gh/admissions/" target="_blank" rel="noopener">Kwame Nkrumah University of Science and Technology</a>,&nbsp;<a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a>, and&nbsp;<a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>.</p>
-        <a class="lnk" href="#" style="width:92px">Learn More</a>
+        <a class="lnk" href="https://pactsafrica.org/about" style="width:92px">Learn More</a>
       </div></div>
     <div class="col"><div class="img" data-i="8bda2d_1ade330e417c415883a89b567f99f8fa"></div></div>
   </section>
@@ -211,7 +199,7 @@ footer .rule{border-top:1px solid var(--line)}
       <div class="in" style="padding:82px 0 0 46px;width:289px">
         <h3 class="s" style="width:235px;margin-bottom:16px">Work Packages</h3>
         <p class="b" style="width:243px;margin-bottom:19px">Explore our diverse research programs aimed at addressing the unique healthcare challenges faced by patients with SCD in Sub-Saharan Africa.</p>
-        <a class="lnk" href="#" style="width:124px">View Packages</a>
+        <a class="lnk" href="https://pactsafrica.org/work-packages-1-1" style="width:124px">View Packages</a>
       </div></div>
     <div class="col c3"><div class="img" data-i="8bda2d_ee96be9e5016478a97defb9ce042d108"></div></div>
   </section>
@@ -222,14 +210,14 @@ footer .rule{border-top:1px solid var(--line)}
       <div class="in" style="padding:89px 0 0 36px;width:252px">
         <h3 class="s" style="width:200px;margin:0 0 17px 1px">Latest News <br>&amp; Events</h3>
         <p class="b" style="width:216px;margin-bottom:22px">Stay informed about the latest developments, events, and breakthroughs in the field of SCD research.</p>
-        <a class="lnk" href="#" style="width:67px">View All</a>
+        <a class="lnk" href="https://pactsafrica.org/news-and-events" style="width:67px">View All</a>
       </div></div>
     <div class="col c2 white"><div class="img" data-i="8bda2d_243b1704fd28467f8886f9ae76a177c3"></div></div>
     <div class="col c3"><div class="img" data-i="8bda2d_bf5121950ce2412f81dab7d0d75c0983" style="opacity:.07"></div>
       <div class="in" style="padding:92px 0 0 42px;width:331px">
         <h3 class="s" style="width:265px;margin-bottom:15px">Publications &amp; Resources</h3>
         <p class="b" style="width:289px;margin-bottom:18px">Discover resources, publications, &amp; opportunities for collaboration with PACTS Africa in our shared mission to combat SCD in Sub-Saharan Africa.</p>
-        <a class="lnk" href="#" style="width:62px;margin-left:1px">View All</a>
+        <a class="lnk" href="https://pactsafrica.org/news-and-events" style="width:62px;margin-left:1px">View All</a>
       </div></div>
   </section>
 </main>
@@ -238,11 +226,10 @@ footer .rule{border-top:1px solid var(--line)}
   <div class="rule"></div>
   <div class="fs">
     <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
-      <div class="fh"><a href="#">PACTS Africa</a></div>
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
       <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
-      <p class="ft" style="margin-bottom:5px"><u><a href="#">Contact</a></u></p>
-      <p class="ft" style="margin-bottom:5px"><u><a href="#">Forum</a></u></p>
-      <p class="ft"><u><a href="#">News &amp; Events</a></u></p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
     </div></div>
     <div class="col f2"><div class="in" style="margin-left:75px">
       <div class="fh">Social Links</div>
@@ -271,21 +258,12 @@ footer .rule{border-top:1px solid var(--line)}
   <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
 </ul>
 
-<div id="ck" role="region" aria-label="Cookie consent">
-  <span>We use cookies on our website to see how you interact with it. By accepting, you agree to our use of such cookies.<a href="#">Privacy Policy</a></span>
-  <div class="bt"><span class="st" role="button" tabindex="0">Settings</span><button class="d">Decline All</button><button class="a">Accept</button></div>
-  <button class="x" aria-label="Close">&times;</button>
-</div>
-
 <script>
 var B="https://static.wixstatic.com/media/";
 document.querySelectorAll("[data-i]").forEach(function(e){
   var id=e.getAttribute("data-i")+"~mv2.jpg",w=e.getAttribute("data-w")||1400;
   var u=B+id+"/v1/fit/w_"+w+",h_"+w+",al_c,q_80/img.jpg";
   if(e.tagName==="IMG")e.src=u;else e.style.backgroundImage='url("'+u+'")';
-});
-document.querySelectorAll("#ck .d,#ck .a,#ck .x").forEach(function(b){
-  b.addEventListener("click",function(){document.getElementById("ck").remove()});
 });
 document.querySelector(".mb").addEventListener("click",function(){
   var o=document.querySelector("nav").classList.toggle("open");this.setAttribute("aria-expanded",o);
