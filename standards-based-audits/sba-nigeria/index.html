@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBA Nigeria | PACTSAFRICA.ORG</title>
+<meta name="description" content="Standards-Based Audits (SBAs) in healthcare facilities in Nigeria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 27px 0 80px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-family: var(--av);
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 11px;
+}
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.breadcrumb a:hover {
+  color: var(--red);
+}
+
+/* Page Title & Subtitle */
+h1.page-title {
+  font-family: var(--fu);
+  font-size: 33px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 0px;
+}
+.page-subtitle {
+  font-family: var(--av);
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0;
+  margin-bottom: 27px;
+}
+
+/* Coordinator Card */
+.coord-card {
+  width: 911px;
+  background-color: #ffffff;
+  display: flex;
+  margin-left: 13px;
+  margin-bottom: 63px;
+  position: relative;
+  align-items: flex-end;
+}
+.coord-photo {
+  width: 239px;
+  height: 333px;
+  flex-shrink: 0;
+  margin-bottom: 25px;
+}
+.coord-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.coord-caption {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+  margin-left: 52px;
+  margin-bottom: 50px;
+}
+
+/* Facility Site Block */
+.site-block {
+  width: 911px;
+  margin-left: 13px;
+}
+.site-title {
+  font-family: var(--fu);
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: #000000;
+}
+.site-title span.underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Horizontal Scroll Container for Images */
+.site-image-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 18px;
+  scrollbar-width: none; /* Hide default scrollbar in Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.site-image-scroll::-webkit-scrollbar {
+  display: none; /* Hide default scrollbar in Chrome/Safari */
+}
+
+.site-image {
+  width: 911px;
+  overflow: hidden;
+}
+.site-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Visual Scroll Indicator */
+.scroll-indicator-track {
+  display: none; /* Only needed when content overflows */
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.scroll-indicator-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 35%; /* Default thumb proportion */
+  background: var(--red);
+  border-radius: 4px;
+  transition: transform 0.08s ease-out;
+}
+
+/* Divider Lines */
+.divider {
+  width: 895px;
+  border-top: 1px solid var(--line);
+  margin: 50px 0;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+  .coord-card, .site-block, .divider {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  /* Activate scroll indicator on tablets & mobile */
+  .scroll-indicator-track {
+    display: block;
+  }
+  
+  /* Retain wider dimension so image content stays readable & horizontally swipeable */
+  .site-image {
+    width: 820px;
+    flex-shrink: 0;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+
+@media (max-width: 600px) {
+  .coord-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .coord-photo {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+    margin: 0 0 16px;
+  }
+  .coord-caption {
+    margin: 0 0 20px;
+  }
+  .site-image {
+    width: 680px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a class="active" href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb">
+      <a href="https://pactsafrica.org/">Home</a> &gt; 
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a> &gt; 
+      <a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a> &gt; 
+      <a href="https://pactsafrica.org/standards-based-audits">Standards-Based Audits</a> &gt; 
+      <a href="https://pactsafrica.org/standards-based-audits/sba-nigeria">Standards-Based Audits in Nigeria</a>
+    </div>
+
+    <!-- Title & Subtitle -->
+    <h1 class="page-title">Standards-Based Audits in Nigeria</h1>
+    <p class="page-subtitle">Standards-Based Audits (SBAs) in healthcare facilities in Nigeria.</p>
+
+    <!-- Coordinator Card -->
+    <section class="coord-card">
+      <div class="coord-photo">
+        <img src="https://static.wixstatic.com/media/8bda2d_cdbef0537d7f4cb8b615daa383d7656d~mv2.jpg/v1/crop/x_92,y_0,w_839,h_1169/fill/w_478,h_666,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ndo_edited.jpg" alt="Etim Etuk - SBA Research Coordinator">
+      </div>
+      <div class="coord-caption">
+        Etim Etuk - SBA Research Coordinator
+      </div>
+    </section>
+
+    <!-- Site 1 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 1: University of Abuja Teaching Hospital (UATH)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_7d778b0aec8048f1aa2e0a8657cc7f17~mv2.png/v1/fill/w_1540,h_720,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-05-14%20at%208_56_02%20PM.png" alt="University of Abuja Teaching Hospital (UATH)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Site 2 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 2: National Hospital Abuja (NHA)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_6f03db9689d245d1ad115a8193424d7c~mv2.png/v1/crop/x_0,y_75,w_1592,h_765/fill/w_1591,h_765,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-05-14%20at%208_37_17%20PM.png" alt="National Hospital Abuja (NHA)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Site 3 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 3: Nyanya General Hospital (NGH)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_1515d866c21748679f3a376f5e993f08~mv2.png/v1/fill/w_911,h_337,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screenshot%202025-05-14%20at%209_00_54%20PM.png" alt="Nyanya General Hospital (NGH)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Site 4 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 4: Gwagwalada Township Clinic (GTC)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_f1e5cc0ee217400693e82ba300dd378b~mv2.png/v1/fill/w_1719,h_832,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-05-14%20at%2011_37_11%20PM.png" alt="Gwagwalada Township Clinic (GTC)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Site 5 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 5: TungaMaje Primary Health Centre (TUGM)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_59d7d08e65d94415a076790a79ed76bb~mv2.png/v1/fill/w_1719,h_832,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-05-14%20at%2011_37_11%20PM.png" alt="TungaMaje Primary Health Centre (TUGM)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Site 6 -->
+    <section class="site-block">
+      <h2 class="site-title">📍 <span class="underline">Site 6: Dutse Makaranta Primary Health Centre (DUTM)</span></h2>
+      <div class="site-image-scroll">
+        <div class="site-image">
+          <img src="https://static.wixstatic.com/media/8bda2d_4040d276734b43418f946cdc44a29f0f~mv2.png/v1/fill/w_1754,h_849,al_c,q_90,enc_avif,quality_auto/Screenshot%202025-05-14%20at%2011_53_02%20PM.png" alt="Dutse Makaranta Primary Health Centre (DUTM)">
+        </div>
+      </div>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-bar"></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+
+// Update Scroll Progress Indicators in Real Time
+document.querySelectorAll(".site-block").forEach(function(block) {
+  var scroller = block.querySelector(".site-image-scroll");
+  var bar = block.querySelector(".scroll-indicator-bar");
+  var track = block.querySelector(".scroll-indicator-track");
+
+  if (!scroller || !bar || !track) return;
+
+  function updateIndicator() {
+    var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    if (maxScroll <= 0) {
+      track.style.display = "none";
+      return;
+    }
+    
+    track.style.display = "block";
+    var ratio = scroller.clientWidth / scroller.scrollWidth;
+    var thumbWidthPercent = Math.max(ratio * 100, 20); // Min thumb size 20%
+    bar.style.width = thumbWidthPercent + "%";
+
+    var scrollPercent = scroller.scrollLeft / maxScroll;
+    var maxTranslate = track.clientWidth - bar.clientWidth;
+    bar.style.transform = "translateX(" + (scrollPercent * maxTranslate) + "px)";
+  }
+
+  scroller.addEventListener("scroll", updateIndicator, { passive: true });
+  window.addEventListener("resize", updateIndicator);
+  window.addEventListener("load", updateIndicator);
+  updateIndicator();
+});
+</script>
+</body>
+</html>
