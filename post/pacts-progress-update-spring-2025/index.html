@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACTS Progress Update: Spring 2025 | PACTSAFRICA.ORG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Sub-header Navigation */
+.blog-subnav {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 24px 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.blog-subnav a {
+  font-family: var(--hr);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--navy);
+  transition: color .3s;
+}
+
+.blog-subnav a:hover {
+  color: var(--red);
+}
+
+/* Post Container */
+.post-wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.post-card {
+  background: #fff;
+  border: 1px solid rgba(5, 36, 79, 0.2);
+  padding: 48px clamp(20px, 5vw, 48px);
+}
+
+/* Post Header */
+.post-title {
+  font-family: var(--hr);
+  font-weight: 700;
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1.3em;
+  color: var(--navy);
+  margin-bottom: 20px;
+  word-break: break-word;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(5, 36, 79, 0.15);
+  font-family: var(--hr);
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.post-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.post-avatar svg {
+  width: 100%;
+  height: 100%;
+  fill: #888;
+}
+
+.post-meta .separator {
+  opacity: 0.5;
+}
+
+/* Post Body */
+.post-content {
+  font-family: var(--hr);
+  font-size: 17px;
+  line-height: 1.7em;
+  color: var(--navy);
+  font-weight: 300;
+}
+
+.post-image-container {
+  width: 100%;
+  margin: 10px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-image-container a {
+  display: block;
+  width: 100%;
+}
+
+.post-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 4px 18px rgba(5, 36, 79, 0.08);
+  border: 1px solid rgba(5, 36, 79, 0.1);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.post-image-container a:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(5, 36, 79, 0.12);
+}
+
+/* Post Footer & Social Share */
+.post-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(5, 36, 79, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--navy);
+  border: 1px solid rgba(5, 36, 79, 0.2);
+  transition: all .25s ease;
+  cursor: pointer;
+}
+
+.share-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.share-btn:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+/* Recent Posts Section */
+.recent-posts-wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.recent-header h2 {
+  font-family: var(--fu);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.recent-header a {
+  font-family: var(--hr);
+  font-size: 14px;
+  color: var(--navy);
+  transition: color .2s;
+}
+
+.recent-header a:hover {
+  color: var(--red);
+}
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.recent-card {
+  background: #fff;
+  border: 1px solid rgba(5, 36, 79, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.recent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(5, 36, 79, 0.08);
+}
+
+.recent-thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+  overflow: hidden;
+}
+
+.recent-thumb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-thumb .play-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.recent-thumb .play-badge svg {
+  width: 42px;
+  height: 42px;
+}
+
+.recent-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recent-title {
+  font-family: var(--hr);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.recent-title:hover {
+  color: var(--red);
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .post-card { padding: 28px 18px; }
+  .post-title { font-size: 24px; }
+  .post-content { font-size: 16px; }
+
+  .recent-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events" class="active">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<!-- All Posts Link Bar -->
+<div class="blog-subnav">
+  <a href="https://pactsafrica.org/blog">&larr; All Posts</a>
+</div>
+
+<!-- Main Post Body -->
+<main class="post-wrapper">
+  <article class="post-card">
+    <h1 class="post-title">PACTS Progress Update: Spring 2025</h1>
+    
+    <div class="post-meta">
+      <div class="post-avatar">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <span>Admin</span>
+      <span class="separator">·</span>
+      <span>Mar 12, 2025</span>
+      <span class="separator">·</span>
+      <span>1 min read</span>
+    </div>
+
+    <div class="post-content">
+      <div class="post-image-container">
+        <a href="https://static.wixstatic.com/media/8bda2d_051b9290523e4a4cbe282b191dad0278~mv2.png" target="_blank" rel="noopener" title="Click to view full image">
+          <img 
+            src="https://static.wixstatic.com/media/8bda2d_051b9290523e4a4cbe282b191dad0278~mv2.png/v1/fill/w_740,h_1069,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/8bda2d_051b9290523e4a4cbe282b191dad0278~mv2.png" 
+            alt="PACTS Progress Update: Spring 2025 Infographic"
+            loading="lazy"
+          >
+        </a>
+      </div>
+    </div>
+
+    <!-- Share Actions -->
+    <div class="post-footer">
+      <div class="share-buttons">
+        <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://pactsafrica.org/post/pacts-progress-update-spring-2025" target="_blank" rel="noopener" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://pactsafrica.org/post/pacts-progress-update-spring-2025" target="_blank" rel="noopener" aria-label="Share on X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://pactsafrica.org/post/pacts-progress-update-spring-2025" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 110-4 2 2 0 010 4z"/></svg>
+        </a>
+        <button class="share-btn" id="copy-btn" title="Copy link" aria-label="Copy link">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </button>
+      </div>
+    </div>
+  </article>
+</main>
+
+<!-- Recent Posts Section -->
+<section class="recent-posts-wrapper">
+  <div class="recent-header">
+    <h2>Recent Posts</h2>
+    <a href="https://pactsafrica.org/blog">See All</a>
+  </div>
+  <div class="recent-grid">
+    <article class="recent-card">
+      <a href="https://pactsafrica.org/post/media-spotlight-dr-imam-abubakar-untangles-the-complexities-of-sickle-cell-disease" class="recent-thumb">
+        <img src="https://i.ytimg.com/vi/T4WbzHYe6oo/maxresdefault.jpg" alt="Media Spotlight: Dr. Imam Abubakar">
+        <div class="play-badge">
+          <svg viewBox="0 0 30 30"><circle fill="#1a1a1a" cx="15" cy="15" r="15"/><polygon fill="#fff" points="11 9 11 21 21 14.88 11 9"/></svg>
+        </div>
+      </a>
+      <div class="recent-body">
+        <a href="https://pactsafrica.org/post/media-spotlight-dr-imam-abubakar-untangles-the-complexities-of-sickle-cell-disease" class="recent-title">
+          MEDIA SPOTLIGHT: Dr. Imam Abubakar Untangles the Complexities of Sickle Cell Disease
+        </a>
+      </div>
+    </article>
+
+    <article class="recent-card">
+      <a href="https://pactsafrica.org/post/advancing-sickle-cell-care-highlights-from-the-second-joint-sba-and-pac-meeting" class="recent-thumb">
+        <img src="https://static.wixstatic.com/media/8bda2d_05d90874e5694c16bd33220780ac71f3~mv2.png" alt="Advancing Sickle Cell Care">
+      </a>
+      <div class="recent-body">
+        <a href="https://pactsafrica.org/post/advancing-sickle-cell-care-highlights-from-the-second-joint-sba-and-pac-meeting" class="recent-title">
+          Advancing Sickle Cell Care: Highlights from the Second Joint SBA and PAC Meeting
+        </a>
+      </div>
+    </article>
+
+    <article class="recent-card">
+      <a href="https://pactsafrica.org/post/pacts-zambia-july-to-december-2025-newsletter" class="recent-thumb">
+        <img src="https://static.wixstatic.com/media/8bda2d_d6e20183ba744a26931cd6a98d14b5f5~mv2.png" alt="PACTS Zambia Newsletter">
+      </a>
+      <div class="recent-body">
+        <a href="https://pactsafrica.org/post/pacts-zambia-july-to-december-2025-newsletter" class="recent-title">
+          PACTS ZAMBIA: JULY TO DECEMBER 2025 NEWSLETTER
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Forum</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/contact">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  const open = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open);
+});
+
+// Copy link action
+const copyBtn = document.getElementById("copy-btn");
+if (copyBtn) {
+  copyBtn.addEventListener("click", function() {
+    const postUrl = "https://pactsafrica.org/post/pacts-progress-update-spring-2025";
+    navigator.clipboard.writeText(postUrl).then(() => {
+      alert("Link copied to clipboard!");
+    });
+  });
+}
+</script>
+</body>
+</html>
