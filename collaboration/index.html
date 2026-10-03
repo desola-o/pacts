@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collaboration | PACTS Africa</title>
+<meta name="description" content="PACTS is a research collaboration between Liverpool School of Tropical Medicine, UK, University of Abuja, University of Zambia, Kwame Nkrumah University of Science and Technology, Syracuse University, and Imperial College London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* layout */
+.strip { display: flex; margin: 0 80px 24px; position: relative; }
+.col { position: relative; background: var(--sand); min-width: 0; }
+.in { position: relative; }
+
+/* Section 1: Hero */
+.sec-hero { margin-top: 6px; min-height: 740px; }
+.sec-hero .col-text { flex: 490 1 0; background: var(--sand); }
+.sec-hero .col-img {
+  flex: 490 1 0;
+  min-height: 740px;
+  background-image: url('https://static.wixstatic.com/media/nsplsh_1167fd68a3c4494f96bc96cc12a4f97a~mv2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+h1.hero-title {
+  font: 700 72px/0.95em var(--hr);
+  letter-spacing: -0.02em;
+  color: #000;
+  margin-bottom: 24px;
+}
+p.hero-desc {
+  font: 300 17px/1.7em var(--hr);
+  color: #000;
+}
+p.hero-desc a { text-decoration: underline; color: #000; }
+p.hero-desc a:hover { color: var(--red); }
+
+/* Partner Institution Blocks */
+.partner-strip {
+  display: flex;
+  margin: 0 80px 24px;
+  min-height: 660px;
+}
+.partner-img-col {
+  flex: 382 1 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+.partner-img-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.partner-title {
+  position: relative;
+  z-index: 2;
+  font: 700 42px/1.15em var(--hr);
+  color: #fff;
+}
+.partner-text-col {
+  flex: 598 1 0;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+}
+.partner-desc {
+  font: 300 17px/1.75em var(--hr);
+  color: #000;
+  text-align: justify;
+}
+
+/* footer */
+footer { position: relative; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* floating social bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* responsive (mobile & tablet) */
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  /* section stacking */
+  .strip, .partner-strip {
+    flex-direction: column;
+    margin: 0 16px 24px;
+    min-height: auto;
+  }
+  .sec-hero .col-text, .sec-hero .col-img, .partner-img-col, .partner-text-col {
+    width: 100% !important;
+    flex: none !important;
+  }
+  .sec-hero .col-img {
+    min-height: 320px;
+    height: 320px;
+  }
+  h1.hero-title {
+    font-size: 44px;
+    line-height: 1.05em;
+  }
+  .in {
+    padding: 36px 20px !important;
+    width: auto !important;
+  }
+  .partner-img-col {
+    min-height: 240px;
+    padding: 30px 20px;
+  }
+  .partner-title {
+    font-size: 32px;
+  }
+  .partner-desc {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.65em;
+  }
+
+  /* footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+@media (max-width: 480px) {
+  h1.hero-title { font-size: 36px; }
+  .partner-title { font-size: 26px; }
+  .partner-img-col { min-height: 200px; padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a class="active" href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main>
+  <!-- Section 1: Hero -->
+  <section class="strip sec-hero">
+    <div class="col col-text">
+      <div class="in" style="padding: 175px 40px 40px;">
+        <h1 class="hero-title">International Cooperation</h1>
+        <p class="hero-desc">
+          PACTS is a research collaboration between 
+          <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine, UK</a>, 
+          <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a>, 
+          <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a>, 
+          <a href="https://apps.knust.edu.gh/admissions/" target="_blank" rel="noopener">Kwame Nkrumah University of Science and Technology</a>, 
+          <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a>, and 
+          <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>.
+        </p>
+      </div>
+    </div>
+    <div class="col col-img"></div>
+  </section>
+
+  <!-- Partner 1: Centre for Capacity Research, LSTM -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_94e3a4511e734dfeb4709c9d7d4e8a46~mv2.jpg');">
+      <h2 class="partner-title">Centre for Capacity Research, LSTM</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          The Centre for Capacity Research specialises in the science of research capacity strengthening – a process of individual and institutional development leading to enhanced ability to design, conduct, manage and evaluate research. The Centre is a global leader in advancing evidence-informed capacity strengthening practice – including in low- and middle-income countries - through conducting high quality, action-focused research into research environments and cultures and by ; fostering a global community of capacity strengthening scientists with equitable low- and middle-income country participation; and by sharing learning and advocating for evidence-informed capacity strengthening practice among researchers and their funders. The Centre is led by Imelda Bates and is one of the very few specialist centres in the world dedicated to the study of research capacity strengthening, including for implementation research. of the condition for better patient outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner 2: Imperial College London -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_c5d695bc62b340b7b6b27668e4d74688~mv2.webp');">
+      <h2 class="partner-title">Imperial College London</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          Imperial College London (ICL) is a world top ten university with an international reputation for excellence in teaching and research. Consistently rated amongst the world's best universities, Imperial is committed to developing the next generation of researchers, scientists and academics through collaboration across disciplines. Located in the heart of London, Imperial is a multidisciplinary space for education, research, translation and commercialisation, harnessing science and innovation to tackle global challenges. The School of Public Health (SPH) at ICL aims to achieve better health in the population through strengthening the public health science base, training the next generation of public health leaders and influencing health policies and programmes around the world.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner 3: Kwame Nkrumah University of Science & Technology, Ghana -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_66d173da82d94a1ca4fab804992dac4e~mv2.jpg');">
+      <h2 class="partner-title">Kwame Nkrumah University of Science &amp; Technology, Ghana</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          Kwame Nkrumah University of Science and Technology (KNUST) is a premier science and technology university in Ghana and African. KNUST exist to advance knowledge in science and technology through creating an environment for undertaking relevant research, quality teaching, entrepreneurship training and community engagement to improve the quality of life. KNUST is located in Kumasi, the capital of Ashanti region, Ghana. The KNUST School of Medicine and Dentistry (KSMD) aims to provide an environment for community-based professional and academic medical training, research and support for health care delivery in Ghana and Africa. KSMD also provides community services, consultancies, creates collaborative links and attracts scholars from the international community.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner 4: The University Teaching Hospitals (UTHs), Zambia -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_687be877090a42de8f3af392f2b962a1~mv2.jpg');">
+      <h2 class="partner-title">The University Teaching Hospitals (UTHs), Zambia</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          The University Teaching Hospitals (UTHs), formerly Lusaka Hospital, is the biggest public tertiary hospital located in Lusaka, the capital city of Zambia. It was built in 1910 and is the largest hospital with 1,655 beds providing primary, secondary and tertiary care. The University Teaching Hospital (UTHs) offers both inpatient and outpatient care and is a center for specialist referrals from across the country. UTH comprises four hospitals – Childrens Hospital, Women and Newborn Hospital, Adult Hospital and Cancer Diseases Hospital. It houses the University of Zambia (UNZA), School of Medicine under the College of Health Sciences and trains medical students, nurses and other health professionals. UNZA and UTH have over the years provided a collaborative space within which research has been conducted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner 5: Syracuse University, USA -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_2873ffdef6734500987f7e6ebe005802~mv2.png');">
+      <h2 class="partner-title">Syracuse University, USA</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          Syracuse University (SU), located in the heart of Central New York in the United States, is a student-focused, private research-intensive university fueled by more than 150 years of tradition, academic distinction and a spirit of discovery. SU’s Research Program on Health Communication and Public Engagement (H-COPE) aims to explore, design, implement or evaluate innovative, health communication and public engagement approaches for addressing global health challenges. Anchored in dissemination science and implementation science approaches, H-COPE is tackling health challenges globally, particularly in Sub-Saharan Africa through active engagement of key partners such as journalists, patients, community health workers, scientists and policymakers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner 6: University of Abuja, Nigeria -->
+  <section class="partner-strip">
+    <div class="partner-img-col" style="background-image: url('https://static.wixstatic.com/media/8bda2d_5aa9ba1d21e34ac8ae985291d54da34b~mv2.jpg');">
+      <h2 class="partner-title">University of Abuja, Nigeria</h2>
+    </div>
+    <div class="partner-text-col">
+      <div class="in" style="padding: 60px 50px;">
+        <p class="partner-desc">
+          The University of Abuja is a premier institution of higher learning in Nigeria located in the nation's capital, Abuja. The university is renowned for its commitment to academic excellence, research, and fostering a vibrant learning environment. With a rich history dating back to its establishment in 1988, the University of Abuja has grown to become a hub of innovation, knowledge creation, and community development. Within the University of Abuja lies the Centre of Excellence in Sickle Cell Disease Research and Training University of Abuja (CESRTA), which was established in line with Nigeria’s five (5) year strategic plan of action for non-communicable diseases in 2015. The centre is mandated to carry out basic, clinical, and translational research in sickle cell disease (SCD) aimed at addressing existing knowledge gaps and finding cheaper, safer therapies as well as innovative ways of reducing the prevalence and burden of sickle cell disease in Nigeria.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
