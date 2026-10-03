@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAC Nigeria Activities | PACTSAFRICA.ORG</title>
+<meta name="description" content="Photos and highlights from PAC Nigeria Activities | PACTS Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: 727px;
+  padding: 79px 0 49px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Wix Pro Gallery Re-creation (Thumbnail Layout) */
+.gallery-wrapper {
+  width: 568px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  user-select: none;
+}
+
+/* Main Display Image Stage */
+.gallery-main-stage {
+  position: relative;
+  width: 568px;
+  height: 420px;
+  background-color: #05244f;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.gallery-main-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.35s ease;
+}
+.gallery-main-stage img.fade-out {
+  opacity: 0.2;
+}
+
+/* Gallery Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: calc(50% - 19.5px);
+  width: 23px;
+  height: 39px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 1px 1.5px rgba(0, 0, 0, 0.6));
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.nav-arrow:hover {
+  opacity: 1;
+}
+.nav-arrow.prev {
+  left: 20px;
+}
+.nav-arrow.next {
+  right: 20px;
+}
+.nav-arrow svg {
+  fill: #ffffff;
+  width: 23px;
+  height: 39px;
+}
+.nav-arrow.prev svg {
+  transform: scaleX(-1);
+}
+
+/* Thumbnail Carousel Strip */
+.thumbnails-container {
+  width: 568px;
+  height: 138px;
+  margin-top: 9px;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.thumbnails-container::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbnails-track {
+  display: flex;
+  gap: 18px;
+  padding: 9px 0;
+  width: max-content;
+}
+
+.thumbnail-item {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  transition: opacity 0.2s;
+}
+.thumbnail-item:not(.active):hover {
+  opacity: 0.8;
+}
+.thumbnail-item.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 2px solid var(--navy);
+}
+
+/* Gallery Link Title */
+.gallery-title {
+  width: 568px;
+  margin-top: 12px;
+  text-align: left;
+}
+.gallery-title a {
+  font-family: var(--av);
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+  text-decoration: underline;
+  line-height: normal;
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .page-container { width: 100%; padding: 0 16px; }
+  .gallery-wrapper { width: 100%; max-width: 568px; }
+  .gallery-main-stage { width: 100%; height: auto; aspect-ratio: 568 / 420; }
+  .thumbnails-container { width: 100%; }
+  .gallery-title { width: 100%; max-width: 568px; }
+
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a class="active" href="#">More</a>
+      <ul class="drop r">
+        <li><a class="active" href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Interactive Pro Gallery (PAC Nigeria Activities) -->
+    <div class="gallery-wrapper">
+      
+      <!-- Stage -->
+      <div class="gallery-main-stage">
+        <img id="mainImage" src="https://static.wixstatic.com/media/8bda2d_fc8ec1a1b09d489da7328c4b271ec827~mv2.png/v1/fill/w_568,h_420,q_90,enc_avif,quality_auto/8bda2d_fc8ec1a1b09d489da7328c4b271ec827~mv2.png" alt="PAC Nigeria Activity">
+        
+        <!-- Navigation Buttons -->
+        <button class="nav-arrow prev" id="prevBtn" aria-label="Previous image">
+          <svg viewBox="0 0 23 39"><path d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z" transform="translate(-855 -230)"></path></svg>
+        </button>
+        <button class="nav-arrow next" id="nextBtn" aria-label="Next image">
+          <svg viewBox="0 0 23 39"><path d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z" transform="translate(-855 -230)"></path></svg>
+        </button>
+      </div>
+
+      <!-- Thumbnail Carousel Strip -->
+      <div class="thumbnails-container" id="thumbsContainer">
+        <div class="thumbnails-track" id="thumbsTrack">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Title Link Under Gallery -->
+      <div class="gallery-title">
+        <p><a href="https://pactsafrica.org/copy-of-nov-2024-workshop">PAC Nigeria Activities</a></p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Forum</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/contact">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// 24 photos from the PAC Nigeria Activities gallery dataset
+const galleryItems = [
+  "8bda2d_fc8ec1a1b09d489da7328c4b271ec827~mv2.png",
+  "8bda2d_c22ed0bc2d084f2ab732816811a3d0cb~mv2.png",
+  "8bda2d_58bc14b007b94b14a638c115ff6eedd2~mv2.png",
+  "8bda2d_bdc6054b3baa407482265808930b694e~mv2.png",
+  "8bda2d_15b544da4bbd4e908c4b0035a94195e7~mv2.png",
+  "8bda2d_8605333a66cf49a0ae9812c46bae9f45~mv2.png",
+  "8bda2d_3e8fb1577e2c46d38ce5627a550a78e9~mv2.png",
+  "8bda2d_1bfff1de31404a378ead22f2ec718a63~mv2.png",
+  "8bda2d_f8615a875fbf4966996f6bdd5ecd8f96~mv2.png",
+  "8bda2d_1ec1795e8cc843828ca2c26e74918653~mv2.png",
+  "8bda2d_8f6297893ab0456fadd7e5f465ba2435~mv2.png",
+  "8bda2d_c8659eac6a1e4407b7bb6ff5983a9ce6~mv2.png",
+  "8bda2d_186fe786c0484bbf94ae0b359c255629~mv2.png",
+  "8bda2d_e9d6dfe92e3c47b78218989b41f9963f~mv2.png",
+  "8bda2d_1de70b8dd5554befa6b9cb327e49d617~mv2.png",
+  "8bda2d_c7bcfad6859f46e49cda46059a8c2ceb~mv2.png",
+  "8bda2d_a96cfdce7a184602b41c336e1d44ecf5~mv2.png",
+  "8bda2d_39eddd079a85490d948ef2a0e46fc8a2~mv2.png",
+  "8bda2d_d489d93fc1ae4822960466dfe229cc5f~mv2.png",
+  "8bda2d_49ab3f30dbca432da63f90493ec59993~mv2.png",
+  "8bda2d_6ff3c84058d04d6c87a94ebc061fcf57~mv2.png",
+  "8bda2d_e1aa9de37544491d8bd0f23a13aece0e~mv2.png",
+  "8bda2d_e889c4d01e5b4349bd4e30e2960c0855~mv2.png",
+  "8bda2d_0c95a19e6f744ebfa28b56a90d6cb719~mv2.png"
+];
+
+let currentIndex = 0;
+const mainImage = document.getElementById("mainImage");
+const thumbsTrack = document.getElementById("thumbsTrack");
+const thumbsContainer = document.getElementById("thumbsContainer");
+
+function getImageUrl(id, width, height, quality = 90) {
+  return `https://static.wixstatic.com/media/${id}/v1/fill/w_${width},h_${height},q_${quality},enc_avif,quality_auto/${id}`;
+}
+
+// Generate thumbnail elements
+galleryItems.forEach((id, index) => {
+  const thumb = document.createElement("div");
+  thumb.className = `thumbnail-item ${index === 0 ? "active" : ""}`;
+  thumb.style.backgroundImage = `url(${getImageUrl(id, 120, 120, 70)})`;
+  thumb.setAttribute("role", "button");
+  thumb.setAttribute("tabindex", "0");
+  thumb.setAttribute("aria-label", `View PAC Nigeria activity image ${index + 1}`);
+  thumb.addEventListener("click", () => switchImage(index));
+  thumb.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      switchImage(index);
+    }
+  });
+  thumbsTrack.appendChild(thumb);
+});
+
+function switchImage(index) {
+  if (index < 0) index = galleryItems.length - 1;
+  if (index >= galleryItems.length) index = 0;
+  currentIndex = index;
+
+  // Fade transition for main display image
+  mainImage.classList.add("fade-out");
+  setTimeout(() => {
+    mainImage.src = getImageUrl(galleryItems[currentIndex], 568, 420, 90);
+    mainImage.classList.remove("fade-out");
+  }, 120);
+
+  // Update active thumbnail highlight
+  const thumbs = document.querySelectorAll(".thumbnail-item");
+  thumbs.forEach((el, i) => {
+    el.classList.toggle("active", i === currentIndex);
+  });
+
+  // Center active thumbnail inside viewport
+  const activeThumb = thumbs[currentIndex];
+  if (activeThumb) {
+    const offset = activeThumb.offsetLeft - (thumbsContainer.offsetWidth / 2) + (activeThumb.offsetWidth / 2);
+    thumbsContainer.scrollTo({ left: offset, behavior: "smooth" });
+  }
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => switchImage(currentIndex - 1));
+document.getElementById("nextBtn").addEventListener("click", () => switchImage(currentIndex + 1));
+
+// Keyboard navigation support
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") switchImage(currentIndex - 1);
+  if (e.key === "ArrowRight") switchImage(currentIndex + 1);
+});
+
+// Mobile Hamburger Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  const open = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open);
+});
+</script>
+</body>
+</html>
