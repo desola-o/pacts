@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People | PACTSAFRICA.ORG</title>
+<meta name="description" content="Meet the researchers, project leaders, and team members collaborating on the PACTS Africa project across Ghana, Nigeria, Zambia, the UK, and the USA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #05244f;
+  --red: #a6180d;
+  --bg-sand: #f4f1ef;
+  --line: #282626;
+  --card-border: rgba(228, 249, 255, 0.85);
+  --hr: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fu: "Futura", "Futura PT", Jost, "Century Gothic", sans-serif;
+  --av: "Avenir", "Avenir Next", "Nunito Sans", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--hr); font-weight: 300; color: var(--navy); font-size: 10px; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+ul { list-style: none; }
+
+/* Header */
+header { position: relative; height: 87px; z-index: 49; display: flex; align-items: flex-start; background: #fff; }
+header .rule { position: absolute; left: 0; right: 0; top: 93px; border-top: 1px solid var(--line); }
+.mb { display: none; }
+.logo { margin: 9px 0 0 80px; width: 139px; height: 68px; display: block; }
+.logo img { width: 139px; height: 68px; object-fit: cover; display: block; }
+nav { margin: 35px 65px 0 auto; }
+nav ul { display: flex; }
+nav li { height: 21px; position: relative; }
+nav a { display: block; height: 21px; line-height: 21px; padding-left: 15px; font: 700 14px/21px var(--fu); color: #000; transition: color .4s; }
+nav a:hover, nav a.active { color: var(--red); }
+
+/* Dropdown menus */
+nav .drop { display: none; position: absolute; top: 21px; left: 0; background: #fafafa; box-shadow: 0 4px 12px rgba(0,0,0,.15); border-radius: 2px; min-width: 220px; padding: 8px 0; z-index: 200; flex-direction: column; }
+nav .drop.r { left: auto; right: 0; }
+nav li:hover > .drop { display: flex; }
+nav .drop li { height: auto; width: auto !important; }
+nav .drop a { height: auto; line-height: 1.4; padding: 8px 18px; font: 400 13px/1.4 var(--hr); color: #000; white-space: nowrap; }
+nav .drop a:hover { color: var(--red); background: #f0f0f0; }
+
+/* Main Section */
+.main-section {
+  background-color: var(--bg-sand);
+  min-height: calc(100vh - 87px);
+  padding: 60px 0 90px;
+}
+.page-container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Page Intro */
+.people-intro {
+  margin-bottom: 45px;
+}
+.people-title {
+  font-family: var(--fu);
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+}
+.people-desc {
+  font-family: var(--hr);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #15291b;
+  max-width: 900px;
+}
+.people-desc a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #15291b;
+  transition: color 0.3s;
+}
+.people-desc a:hover {
+  color: var(--red);
+}
+
+/* People Grid */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 24px;
+}
+.person-card {
+  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.person-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.person-media {
+  width: 100%;
+  height: 380px;
+  background-color: #e5edf0;
+  overflow: hidden;
+}
+.person-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: opacity 0.25s ease, transform 0.35s ease;
+}
+.person-card:hover .person-media img {
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+
+/* Card Body */
+.person-body {
+  padding: 22px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #ffffff;
+}
+.person-name {
+  font-family: var(--fu);
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+.person-card:hover .person-name {
+  color: var(--red);
+}
+.person-role {
+  font-family: var(--hr);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+.person-link {
+  font-family: var(--hr);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  align-self: flex-start;
+  transition: color 0.3s;
+}
+.person-link:hover {
+  color: var(--red);
+}
+
+/* Footer */
+footer { position: relative; background: #fff; }
+footer .rule { border-top: 1px solid var(--line); }
+.fs { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 80px; height: 473px; }
+.fs .col { background: transparent; height: 100%; }
+.f1 { flex: 247 1 0; }
+.f2 { flex: 217 1 0; }
+.f3 { flex: 516 1 0; }
+.fh { font: 700 21px/normal var(--fu); color: #000; margin-top: 98px; white-space: nowrap; }
+.ft { font: 300 17px/1.8em var(--hr); color: #000; }
+.ft u { text-decoration: underline; }
+.fb { height: 53px; background: #fff; }
+
+/* Floating Social Bar */
+.social { position: fixed; left: 29px; bottom: 34px; z-index: 60; }
+.social li { width: 26px; height: 26px; margin-bottom: 11px; }
+.social li:last-child { margin-bottom: 0; }
+.social img { width: 26px; height: 26px; display: block; cursor: pointer; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .page-container {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  header { height: 72px; align-items: center; }
+  header .rule { top: auto; bottom: 0; }
+  .logo { margin: 0 0 0 16px; width: 112px; height: 55px; }
+  .logo img { width: 112px; height: 55px; }
+  .mb { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 12px 0 auto; padding: 0 10px; background: none; border: 0; cursor: pointer; }
+  .mb i { display: block; height: 2px; background: #000; transition: transform .2s, opacity .2s; }
+  .mb[aria-expanded=true] i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mb[aria-expanded=true] i:nth-child(2) { opacity: 0; }
+  .mb[aria-expanded=true] i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 72px; left: 0; right: 0; margin: 0; background: #fff; border-bottom: 1px solid var(--line); z-index: 70; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 8px 0; }
+  nav li { width: auto !important; height: auto; }
+  nav a { height: auto; padding: 12px 24px; font-size: 16px; }
+  nav .drop { position: static; box-shadow: none; background: #f4f1ef; padding: 4px 0; min-width: 0; }
+  nav .drop a { padding: 8px 36px; font-size: 14px; }
+
+  .people-title { font-size: 32px; }
+  .people-desc { font-size: 14px; }
+
+  .people-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .person-media {
+    height: 340px;
+  }
+
+  /* Footer on mobile */
+  .fs { flex-direction: column; height: auto; min-width: 0; padding: 0 24px 24px; }
+  .fs .col { height: auto; }
+  .fs .in { margin-left: 0 !important; width: auto !important; }
+  .fh { margin-top: 36px; }
+  .f3 .in p:last-child { margin: 32px 0 0 !important; }
+  .fb { height: 24px; }
+  footer .rule { margin: 0; }
+  .social { position: static; display: flex; gap: 11px; padding: 0 24px 60px; background: #fff; }
+  .social li { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://pactsafrica.org/"><img alt="PACTS Africa Logo" src="https://static.wixstatic.com/media/8bda2d_25a12ad0582f4abf9dd91ac0eb5ea2af~mv2.jpg"></a>
+  <button class="mb" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav aria-label="Site"><ul>
+    <li style="width:66px"><a href="https://pactsafrica.org/about">About</a></li>
+    <li style="width:113px"><a href="https://pactsafrica.org/collaboration">Collaboration</a></li>
+    <li style="width:125px">
+      <a href="https://pactsafrica.org/work-packages-1-1">Work Packages</a>
+      <ul class="drop">
+        <li><a href="https://pactsafrica.org/action-research-cycles">Action Research Cycles</a></li>
+        <li><a href="https://pactsafrica.org/communication">Communication Interventions</a></li>
+        <li><a href="https://pactsafrica.org/capacity-strengthening">Capacity Strengthening</a></li>
+        <li><a href="https://pactsafrica.org/epidemiology-and-mapping">Epidemiology &amp; Mapping</a></li>
+      </ul>
+    </li>
+    <li style="width:121px"><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></li>
+    <li style="width:62px">
+      <a class="active" href="#">More</a>
+      <ul class="drop r">
+        <li><a href="https://pactsafrica.org/gallery">Gallery</a></li>
+        <li><a class="active" href="https://pactsafrica.org/our-people">People</a></li>
+      </ul>
+    </li>
+  </ul></nav>
+  <div class="rule"></div>
+</header>
+
+<main class="main-section">
+  <div class="page-container">
+
+    <!-- Intro Headline and Description -->
+    <div class="people-intro">
+      <h1 class="people-title">People</h1>
+      <p class="people-desc">
+        PACTS is a research collaboration comprising of collaborators from
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noreferrer noopener">Liverpool School of Tropical Medicine, UK</a>,
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noreferrer noopener">University of Abuja</a>,
+        <a href="https://www.unza.zm/" target="_blank" rel="noreferrer noopener">University of Zambia</a>,
+        <a href="https://apps.knust.edu.gh/admissions/" target="_blank" rel="noreferrer noopener">Kwame Nkrumah University of Science and Technology</a>,
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noreferrer noopener">Syracuse University</a>, and
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noreferrer noopener">Imperial College London</a>.
+      </p>
+    </div>
+
+    <!-- People Grid (37 Members) -->
+    <div class="people-grid">
+
+      <!-- 1: Imelda Bates -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_288b9fb3cd0848ffb1010f40f7b326a7~mv2.jpg" alt="Imelda Bates">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/imelda-bates">Imelda Bates</a></h2>
+          <p class="person-role">Co-Principal Investigator</p>
+          <a class="person-link" href="https://pactsafrica.org/imelda-bates">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 2: Obiageli Nnodu -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_c2d715a795684b7f8b853fd99168f427~mv2.jpeg" alt="Obiageli Nnodu">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/obiageli-nnodu">Obiageli Nnodu</a></h2>
+          <p class="person-role">Co-Principal Investigator; Nigeria Country Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/obiageli-nnodu">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 3: Alex Osei-Akoto -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_86869abe61ae4707969ee507fc2c4fd0~mv2.jpg" alt="Alex Osei-Akoto">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/alex-osei-akoto">Alex Osei-Akoto</a></h2>
+          <p class="person-role">Ghana Country Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/alex-osei-akoto">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 4: Catherine Chunda-Liyoka -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_995dc547fbe641adb1199bf0253070c6~mv2.jpg" alt="Catherine Chunda-Liyoka">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/catherine-chunda-liyoka">Catherine Chunda- Liyoka</a></h2>
+          <p class="person-role">Zambia Country Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/catherine-chunda-liyoka">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 5: Justin Pulford -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_64255a289b3c4b6ca547d659e3194b8d~mv2.jpg" alt="Justin Pulford">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/justin-pulford">Justin Pulford</a></h2>
+          <p class="person-role">Capacity Strengthening Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/justin-pulford">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 6: Tara Tancred -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_55e06bea89d94313b3cb326f1aa112c6~mv2.jpg" alt="Tara Tancred">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/tara-tancred">Tara Tancred</a></h2>
+          <p class="person-role">Implementation Research Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/tara-tancred">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 7: Motto Nganda -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_dd4f118b50394b7a9acdc0aef46237be~mv2.jpg" alt="Motto Nganda">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/motto-nganda">Motto Nganda</a></h2>
+          <p class="person-role">Vice Implementation Research Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/motto-nganda">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 8: Fred Piel -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_e7953b1721fb43dfab806e9c928676d6~mv2.jpg" alt="Fred Piel">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/fred-piel">Fred Piel</a></h2>
+          <p class="person-role">Epidemiology &amp; Mapping Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/fred-piel">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 9: Bernard Appiah -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_154ec821e180478ab0ab831850617eb1~mv2.jpg" alt="Bernard Appiah">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/bernard-appiah">Bernard Appiah</a></h2>
+          <p class="person-role">Research Journalist &amp; Media Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/bernard-appiah">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 10: Susie Crossman -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_b0238491543b425e82e753024e79d178~mv2.jpg" alt="Susie Crossman">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/susie-crossman">Susie Crossman</a></h2>
+          <p class="person-role">Programme Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/susie-crossman">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 11: Zena Parker -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_4ec6b7c0b04748908076a0adf5ad3de0~mv2.jpg" alt="Zena Parker">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/zena-parker">Zena Parker</a></h2>
+          <p class="person-role">Programme Coordinators</p>
+          <a class="person-link" href="https://pactsafrica.org/zena-parker">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 12: Reuben Chianumba -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_451e70061aa0478faacdedb187f18de8~mv2.jpg" alt="Reuben Chianumba">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/reuben-chianumba">Reuben Chianumba</a></h2>
+          <p class="person-role">Programme Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/reuben-chianumba">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 13: Cynthia Phiri -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_edd06176250a4236bb16531528279844~mv2.jpg" alt="Cynthia Phiri">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/cynthia-phiri">Cynthia Phiri</a></h2>
+          <p class="person-role">Zambia Project Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/cynthia-phiri">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 14: Aaron Kwasi Nartey -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_b9a7d8e3ded9494688d2b262d936027f~mv2.jpg" alt="Aaron Kwasi Nartey">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/aaron-kwasi-nartey">Aaron Kwasi Nartey</a></h2>
+          <p class="person-role">Ghana Program Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/aaron-kwasi-nartey">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 15: Imam Abubakar -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_8b4fcc3aa0ff4fd18d8de6bb9f56e234~mv2.jpg" alt="Imam Abubakar">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/imam-abubakar">Imam Abubakar</a></h2>
+          <p class="person-role">PAC Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/imam-abubakar">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 16: Eno-Abasi E. Etuk -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_ada642bb7148427ea8b460bc967c1873~mv2.jpg" alt="Eno-Abasi E. Etuk">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/eno-abasi-etuk">Eno-Abasi E. Etuk</a></h2>
+          <p class="person-role">SBA Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/eno-abasi-etuk">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 17: Lawrence Osei-Tutu -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_3cef649868b9445b818eabfab30091f0~mv2.jpg" alt="Lawrence Osei-Tutu">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/lawrence-osei-tutu">Lawrence Osei-Tutu</a></h2>
+          <p class="person-role">Standard-based Audit (SBA) Lead, Ghana</p>
+          <a class="person-link" href="https://pactsafrica.org/lawrence-osei-tutu">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 18: Pauline Musukwa Sambo -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_fd9cda0fe9fa4ba0b38181d4912bc016~mv2.jpeg" alt="Pauline Musukwa Sambo">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/pauline-musukwa-sambo">Pauline Musukwa Sambo</a></h2>
+          <p class="person-role">Zambia Advisor/ Capacity Strengthening lead</p>
+          <a class="person-link" href="https://pactsafrica.org/pauline-musukwa-sambo">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 19: Suraj Yawnumah Abubakar -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_89c3f0a07e3e4eb7900d83057f019085~mv2.jpg" alt="Suraj Yawnumah Abubakar">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/suraj-yawnumah-abubakar">Suraj Yawnumah Abubakar</a></h2>
+          <p class="person-role">Participatory Action Cycle (PAC) Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/suraj-yawnumah-abubakar">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 20: Mmamulatelo S Siame-Mumba -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_b99022a6e10647f79203a9fa67064b85~mv2.jpg" alt="Mmamulatelo S Siame-Mumba">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/mmamulatelo-siame-mumba">Mmamulatelo S Siame-Mumba</a></h2>
+          <p class="person-role">PhD Student, SBA lead, Project coordinator</p>
+          <a class="person-link" href="https://pactsafrica.org/mmamulatelo-siame-mumba">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 21: Eunice Agyeman Ahmed -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_f64a6b7105a14e0f8c206891dc682b91~mv2.png" alt="Eunice Agyeman Ahmed">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/eunice-agyeman-ahmed">Eunice Agyeman Ahmed</a></h2>
+          <p class="person-role">PhD Student</p>
+          <a class="person-link" href="https://pactsafrica.org/eunice-agyeman-ahmed">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 22: Hezekiah Isa -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_74f9fec05e9d42dd812cfdc252a905d7~mv2.webp" alt="Hezekiah Isa">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/hezekiah-isa">Hezekiah Isa</a></h2>
+          <p class="person-role">PhD Candidate</p>
+          <a class="person-link" href="https://pactsafrica.org/hezekiah-isa">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 23: Phillip Chali Mubanga -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_56fcec4fa91441a4a54848060d200830~mv2.jpg" alt="Phillip Chali Mubanga">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/phillip-chali-mubanga">Phillip Chali Mubanga</a></h2>
+          <p class="person-role">Finance Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/phillip-chali-mubanga">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 24: Ijeoma Udeozo -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_556f08d7b3b941c3bd1dbfc28c093af1~mv2.jpg" alt="Ijeoma Udeozo">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/ijeoma-udeozo">Ijeoma Udeozo</a></h2>
+          <p class="person-role">Administrator</p>
+          <a class="person-link" href="https://pactsafrica.org/ijeoma-udeozo">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 25: Samuel Frimpong Odoom -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_dce6d049e0104e0cb75e8de3e10fec6e~mv2.jpg" alt="Samuel Frimpong Odoom">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/samuel-frimpong-odoom">Samuel Frimpong Odoom</a></h2>
+          <p class="person-role">Administrator</p>
+          <a class="person-link" href="https://pactsafrica.org/samuel-frimpong-odoom">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 26: Evans Xorse Amuzu -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_458f72fe0c764984b0b8d5607b044167~mv2.jpg" alt="Evans Xorse Amuzu">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/evans-xorse-amuzu">Evans Xorse Amuzu</a></h2>
+          <p class="person-role">Researcher</p>
+          <a class="person-link" href="https://pactsafrica.org/evans-xorse-amuzu">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 27: Michelle Asiedu-Danso -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_5277b80b5e2e4828b38759e42cf602f3~mv2.jpg" alt="Michelle Asiedu-Danso">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/michelle-asiedu-danso">Michelle Asiedu-Danso</a></h2>
+          <p class="person-role">Graduate Research Assistant</p>
+          <a class="person-link" href="https://pactsafrica.org/michelle-asiedu-danso">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 28: Julia C. Boms -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_14b2a3f00e7a4d5e8cb8b36ad18a9447~mv2.jpg" alt="Julia C. Boms">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/julia-boms">Julia C. Boms</a></h2>
+          <p class="person-role">Graduate Research Assistant</p>
+          <a class="person-link" href="https://pactsafrica.org/julia-boms">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 29: Collins Annor -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_14f173a991954227a23b2ab6a8dba46c~mv2.jpg" alt="Collins Annor">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/collins-annor">Collins Annor</a></h2>
+          <p class="person-role">Graduate Research Assistant</p>
+          <a class="person-link" href="https://pactsafrica.org/collins-annor">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 30: Reuben Ngofa -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_3f9a33ed3ef741998b2fd7d3baa5f41f~mv2.jpg" alt="Reuben Ngofa">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/reuben-ngofa">Reuben Ngofa</a></h2>
+          <p class="person-role">Mapping Support</p>
+          <a class="person-link" href="https://pactsafrica.org/reuben-ngofa">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 31: Evelyn Matongo -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_b91e659d55894bceaecbd63784d95ddb~mv2.png" alt="Evelyn Matongo">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/evelyn-matongo">Evelyn Matongo</a></h2>
+          <p class="person-role">PAC Research Coordinator</p>
+          <a class="person-link" href="https://pactsafrica.org/evelyn-matongo">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 32: Aishat Salihu -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_9e3f5d9e62e94a1dae7acb4550e05c7c~mv2.jpeg" alt="Aishat Salihu">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/aishatsalihu">Aishat Salihu</a></h2>
+          <p class="person-role">Communications Officer</p>
+          <a class="person-link" href="https://pactsafrica.org/aishatsalihu">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 33: Eric Chungu -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_643b31f1d8944046a0d87b232148efc9~mv2.jpg" alt="Eric Chungu">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/eric-chungu">Eric Chungu</a></h2>
+          <p class="person-role">Zambia Communications Officer</p>
+          <a class="person-link" href="https://pactsafrica.org/eric-chungu">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 34: Moono Tuchili -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_0cdbe7da0f67490a80b9bcfebfe06608~mv2.jpg" alt="Moono Tuchili">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/moono-tuchili">Moono Tuchili</a></h2>
+          <p class="person-role">Zambia Program Manager</p>
+          <a class="person-link" href="https://pactsafrica.org/moono-tuchili">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 35: Mavis Chishala -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_ba61018c71d84d7aa8db53c839a4988b~mv2.jpg" alt="Mavis Chishala">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/mavis-chishala">Mavis Chishala</a></h2>
+          <p class="person-role">Zambia SBA Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/mavis-chishala">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 36: Chisala Mulenga -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_7b7850fe1053405684afb8a6028581d6~mv2.png" alt="Chisala Mulenga">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/chisala-mulenga">Chisala Mulenga</a></h2>
+          <p class="person-role">Zambia PAC Lead</p>
+          <a class="person-link" href="https://pactsafrica.org/chisala-mulenga">View Profile</a>
+        </div>
+      </div>
+
+      <!-- 37: Moses Mbisa -->
+      <div class="person-card">
+        <div class="person-media">
+          <img src="https://static.wixstatic.com/media/8bda2d_ed20ab436a744879a033ad06cd2a1585~mv2.jpg" alt="Moses Mbisa">
+        </div>
+        <div class="person-body">
+          <h2 class="person-name"><a href="https://pactsafrica.org/moses-mbisa">Moses Mbisa</a></h2>
+          <p class="person-role">Research Finance Administrator</p>
+          <a class="person-link" href="https://pactsafrica.org/moses-mbisa">View Profile</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <div class="fs">
+    <div class="col f1"><div class="in" style="margin-left:72px;width:204px">
+      <div class="fh"><a href="https://pactsafrica.org/">PACTS Africa</a></div>
+      <p class="ft" style="margin-top:36px;margin-bottom:5px">Ghana | United Kingdom | Nigeria | USA | Zambia</p>
+      <p class="ft" style="margin-bottom:5px"><u><a href="https://pactsafrica.org/contact">Contact</a></u></p>
+      <p class="ft"><u><a href="https://pactsafrica.org/news-and-events">News &amp; Events</a></u></p>
+    </div></div>
+    <div class="col f2"><div class="in" style="margin-left:75px">
+      <div class="fh">Social Links</div>
+      <p class="ft" style="margin:36px 0 0 1px">Facebook<br>Twitter<br>YouTube<br>LinkedIn</p>
+    </div></div>
+    <div class="col f3"><div class="in" style="margin-left:99px">
+      <div class="fh">Collaborators</div>
+      <p class="ft" style="margin-top:21px;width:404px">
+        <a href="https://www.lstmed.ac.uk/" target="_blank" rel="noopener">Liverpool School of Tropical Medicine</a><br>
+        <a href="https://www.uniabuja.edu.ng/" target="_blank" rel="noopener">University of Abuja</a><br>
+        <a href="https://www.unza.zm/" target="_blank" rel="noopener">University of Zambia</a><br>
+        <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener">Kwame Nkrumah University. Ghana</a><br>
+        <a href="https://www.syracuse.edu/" target="_blank" rel="noopener">Syracuse University</a><br>
+        <a href="https://www.imperial.ac.uk/" target="_blank" rel="noopener">Imperial College London</a>
+      </p>
+      <p style="margin:48px 0 0 383px;font:700 15px/normal var(--hr);color:#000;white-space:nowrap">© 2026 | PACTS Africa</p>
+    </div></div>
+  </div>
+  <div class="fb"></div>
+</footer>
+
+<ul class="social" aria-label="Social Bar">
+  <li><img alt="Facebook" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png"></li>
+  <li><img alt="Twitter" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png"></li>
+  <li><img alt="YouTube" src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png"></li>
+  <li><img alt="Instagram" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"></li>
+</ul>
+
+<script>
+// Mobile Hamburger Menu Toggle
+document.querySelector(".mb").addEventListener("click", function() {
+  var o = document.querySelector("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", o);
+});
+</script>
+</body>
+</html>
