@@ -1,10 +1,11 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PACTS</title>
 <meta name="description" content="PACTS is a medical research initiative dedicated to fostering collaborative efforts to enhance the understanding of Sickle Cell Disease (SCD) and improve patient care in Sub-Saharan Africa (SSA).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Jost:wght@100..900&amp;display=swap" rel="stylesheet">
 <style>
 :root{--navy:#05244f;--red:#a6180d;--sand:#f4f1ef;--line:#282626;
@@ -47,7 +48,7 @@ p.b{font:300 17px/1.6em var(--hr);color:#000}
 .lnk{display:block;height:24px;font:700 17px/24px var(--hr);color:#000;box-shadow:0 1px 0 0 var(--red);white-space:nowrap;transition:color .4s}
 .lnk:hover{color:var(--red)}
 
-/* hero — side rules intersect the header rule: flush to header, no top border */
+/* hero — 1px side rules matching on desktop */
 .hero{margin:0 80px 14px;min-height:615px;border:1px solid var(--line);border-top:0}
 .hero .col{flex:490 1 0;display:flex;flex-direction:column;justify-content:center}
 .hero .in{padding-left:35px}
@@ -104,9 +105,18 @@ footer .rule{border-top:1px solid var(--line)}
   nav .drop a{padding:8px 36px;font-size:14px}
 
   .strip{flex-direction:column;margin:0 16px;min-width:0}
-  /* hero — same T-junction with the header rule; pseudo lines avoid a 1px content shift */
+  /* hero — both sides use the identical 1px rule and sit above background */
   .hero{margin:0 16px;min-height:0;border:0;position:relative}
-  .hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;width:1px;background:var(--line);pointer-events:none}
+  .hero::before,.hero::after{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:var(--line);
+    pointer-events:none;
+    z-index:1; /* Ensures the left line matches the right line without being hidden */
+  }
   .hero::before{left:0}
   .hero::after{right:0}
   .hero .col{display:block}
@@ -177,7 +187,8 @@ footer .rule{border-top:1px solid var(--line)}
       <div class="in" style="padding-left:35px">
         <h1 class="h1" style="max-width:388px;min-height:223px">Improving the wellbeing and health outcomes of patients with sickle cell disease in Sub-Saharan Africa.</h1>
         <a class="btn" href="https://pactsafrica.org/about" style="margin-top:21px">Learn More</a>
-      </div></div>
+      </div>
+    </div>
     <div class="col"><div class="img" data-i="8bda2d_ab9cc0da1f0645ed9c05558592a6991f" style="background-image: url(&quot;https://static.wixstatic.com/media/8bda2d_ab9cc0da1f0645ed9c05558592a6991f~mv2.jpg/v1/fit/w_1400,h_1400,al_c,q_80/img.jpg&quot;);"></div></div>
   </section>
 
@@ -299,9 +310,9 @@ if(nav&&mb){
 
   pairs.forEach(function(p){
     p.link.addEventListener("click",function(e){
-      if(!mq.matches)return;                                  /* desktop: normal link */
+      if(!mq.matches)return;
       var isHash=(p.link.getAttribute("href")||"").charAt(0)==="#";
-      if(!isHash&&p.li.classList.contains("open"))return;      /* 2nd tap follows the link */
+      if(!isHash&&p.li.classList.contains("open"))return;
       e.preventDefault();
       close(p.li);
       p.li.classList.toggle("open");
@@ -321,4 +332,6 @@ if(nav&&mb){
   mq.addEventListener("change",function(){close();});
 }
 </script>
-</body></html>
+
+</body>
+</html>
